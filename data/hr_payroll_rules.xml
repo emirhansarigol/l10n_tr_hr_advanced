@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- BASIC (Temel Maaş) -->
+        <record id="l10n_tr_hr_payroll.l10n_tr_hr_payroll_structure_tr_employee_salary_basic_salary_rule" model="hr.salary.rule">
+            <field name="sequence" eval="7"/>
+            <field name="amount_python_compute"><![CDATA[
+# 1. Puantajları Ayırma İşlemi
+ucretsiz_gun = 0.0
+toplam_puantaj = 0.0
+out_gun = 0.0
+
+for code, wd in worked_days.items():
+    k = str(code).upper()
+    isim = str(wd.work_entry_type_id.name).upper()
+
+    # SÖZLEŞME DIŞI
+    if k == 'OUT' or 'SÖZLEŞME' in isim or 'SOZLESME' in isim:
+        out_gun += wd.number_of_days
+        continue
+
+    # Fazla mesai hariç aktif günler
+    if k not in ['MESAI', 'OT', 'OVERTIME']:
+        toplam_puantaj += wd.number_of_days
+
+        # Ücretsiz izinleri yakala
+        if k in ['LEAVE90', 'UCRETSIZ', 'UNPAID', 'ODENMEMIS'] or 'ÖDENMEMİŞ' in isim or 'ÜCRETSİZ' in isim:
+            ucretsiz_gun += wd.number_of_days
+
+# 2. HAM MAAŞI ÇEK
+maas = 0.0
+try:
+    if payslip.version_id:
+        maas = payslip.version_id.wage
+except:
+    pass
+
+if maas == 0.0:
+    try:
+        if payslip.contract_id:
+            maas = payslip.contract_id.wage
+    except:
+        pass
+
+ay_ceken_gun = payslip.date_to.day
+
+# 3. KIST AY MATEMATİĞİ
+if out_gun == 0 and toplam_puantaj >= ay_ceken_gun:
+    odenecek_gun = 30.0 - ucretsiz_gun
+else:
+    odenecek_gun = toplam_puantaj - ucretsiz_gun
+
+if odenecek_gun > 30.0:
+    odenecek_gun = 30.0
+if odenecek_gun < 0.0:
+    odenecek_gun = 0.0
+
+if odenecek_gun > 0:
+    result = (maas / 30.0) * odenecek_gun
+else:
+    result = 0.0
+            ]]></field>
+        </record>
+
+        <!-- AGİ -->
+        <record id="hr_salary_rule_agi" model="hr.salary.rule">
+            <field name="name">Asgari Geçim İndirimi</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">AGI</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">fix</field>
+            <field name="quantity">1</field>
+            <field name="amount_fix">0.0</field>
+        </record>
+
+        <!-- YOL YARDIMI (Sıra: 8) -->
+        <record id="hr_salary_rule_yol_yardimi" model="hr.salary.rule">
+            <field name="name">Yol Yardımı</field>
+            <field name="code">YOL_YARDIM</field>
+            <field name="sequence" eval="8"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python"><![CDATA[result = 'WORK100' in worked_days and worked_days['WORK100'].number_of_days > 0]]></field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+gun_sayisi = worked_days['WORK100'].number_of_days
+gunluk_ucret = version.yol_yardim_ucreti if version else 0.0
+result = gun_sayisi * gunluk_ucret
+            ]]></field>
+        </record>
+
+        <!-- YEMEK YARDIMI (Sıra: 9) -->
+        <record id="hr_salary_rule_yemek_yardimi" model="hr.salary.rule">
+            <field name="name">Yemek Yardımı</field>
+            <field name="code">YEMEK_YARDIM</field>
+            <field name="sequence" eval="9"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python"><![CDATA[result = 'WORK100' in worked_days and worked_days['WORK100'].number_of_days > 0]]></field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+gun_sayisi = worked_days['WORK100'].number_of_days
+gunluk_ucret = version.yemek_yardim_ucreti if version else 0.0
+result = gun_sayisi * gunluk_ucret
+            ]]></field>
+        </record>
+
+        <!-- SGK KOŞUL İPTALLERİ -->
+        <record id="l10n_tr_hr_payroll.turkey_salary_rule_ssie" model="hr.salary.rule">
+            <field name="condition_select">none</field>
+        </record>
+        <record id="l10n_tr_hr_payroll.turkey_salary_rule_ssie_unemployment" model="hr.salary.rule">
+            <field name="condition_select">none</field>
+        </record>
+        <record id="l10n_tr_hr_payroll.turkey_ssi_company_contribution" model="hr.salary.rule">
+            <field name="condition_select">none</field>
+        </record>
+        <record id="l10n_tr_hr_payroll.turkey_ssi_unemployment_company_contribution" model="hr.salary.rule">
+            <field name="condition_select">none</field>
+        </record>
+
+        <!-- FAZLA MESAİ (OVERTIME) KURALI (Sıra: 9) -->
+        <record id="hr_rule_overtime_tr" model="hr.salary.rule">
+            <field name="name">Fazla Mesai Ücreti</field>
+            <field name="code">OVERTIME</field>
+            <field name="sequence" eval="9"/>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="struct_id" ref="l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+mesai_saat = 0.0
+if 'OVERTIME' in worked_days:
+    mesai_saat = worked_days['OVERTIME'].number_of_hours
+
+if mesai_saat > 0:
+    maas = 0.0
+    try:
+        if payslip.version_id:
+            maas = payslip.version_id.wage
+    except:
+        pass
+    if maas == 0.0:
+        try:
+            if payslip.contract_id:
+                maas = payslip.contract_id.wage
+        except:
+            pass
+    saatlik_ucret = (maas / 30.0) / 7.5
+    result = mesai_saat * saatlik_ucret * 1.5
+else:
+    result = 0.0
+            ]]></field>
+        </record>
+
+        <!-- 9. SGK İŞVEREN TEŞVİKİ (Sıra: 24 - Matrah Kusursuzlaştırıldı) -->
+        <record id="hr_salary_rule_tesvik_5510" model="hr.salary.rule">
+            <field name="name">SGK İşveren Teşviki (Dinamik)</field>
+            <field name="code">TESVIK_5510</field>
+            <field name="sequence" eval="24"/>
+            <field name="category_id" ref="hr_payroll.COMP"/>
+            <field name="struct_id" ref="l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute"><![CDATA[
+try:
+    sgk_matrahi = categories['BASIC']
+
+    yol_parasi = 0.0
+    try:
+        if 'WORK100' in worked_days and payslip.version_id:
+            yol_parasi = worked_days['WORK100'].number_of_days * payslip.version_id.yol_yardim_ucreti
+    except:
+        pass
+
+    mesai_parasi = 0.0
+    try:
+        if 'OVERTIME' in worked_days:
+            mesai_saati = worked_days['OVERTIME'].number_of_hours
+            if mesai_saati > 0:
+                maas = payslip.version_id.wage if payslip.version_id else (payslip.contract_id.wage if payslip.contract_id else 0.0)
+                if maas > 0:
+                    saatlik_ucret = (maas / 30.0) / 7.5
+                    mesai_parasi = mesai_saati * saatlik_ucret * 1.5
+    except:
+        pass
+
+    istisna_asan_yemek = 0.0
+    try:
+        if 'WORK100' in worked_days and payslip.version_id:
+            yemek_parasi = worked_days['WORK100'].number_of_days * payslip.version_id.yemek_yardim_ucreti
+            if yemek_parasi > 0:
+                try:
+                    aylik_asgari_brut = payslip._rule_parameter('l10n_tr_gross_min_wage')
+                except:
+                    aylik_asgari_brut = 20002.50
+                gunluk_istisna = (aylik_asgari_brut / 30.0) * 0.2365
+                toplam_istisna = gunluk_istisna * worked_days['WORK100'].number_of_days
+                if yemek_parasi > toplam_istisna:
+                    istisna_asan_yemek = yemek_parasi - toplam_istisna
+    except:
+        pass
+
+    sgk_matrahi += mesai_parasi + yol_parasi + istisna_asan_yemek
+except:
+    sgk_matrahi = 0.0
+
+result_base = min(sgk_matrahi, payslip._rule_parameter('l10n_tr_ssi_base_ceiling'))
+
+kanun_no = '00000'
+if payslip.version_id:
+    kanun_no = payslip.version_id.sgk_kanun_no
+
+if kanun_no == '05510':
+    result = result_base * 0.05
+elif kanun_no == '06111':
+    result = result_base * 0.205
+elif kanun_no == '05746':
+    result = result_base * 0.1025
+else:
+    result = 0.0
+            ]]></field>
+        </record>
+
+        <!-- ======================================================= -->
+        <!-- 2026 YILI ASGARİ ÜCRET VE VERGİ İSTİSNALARI PARAMETRELERİ -->
+        <!-- ======================================================= -->
+
+        <!-- 1. 2026 Brüt Asgari Ücret (33.030,00 TL) -->
+        <record id="rule_parameter_value_min_wage_2026" model="hr.rule.parameter.value">
+            <field name="rule_parameter_id" search="[('code', '=', 'l10n_tr_min_wage')]"/>
+            <field name="parameter_value">33030.00</field>
+            <field name="date_from">2026-01-01</field>
+        </record>
+
+        <!-- 2. 2026 Gelir Vergisi (GV) İstisnası (4.211,33 TL) -->
+        <record id="rule_parameter_value_tax_exempt_2026" model="hr.rule.parameter.value">
+            <field name="rule_parameter_id" search="[('code', '=', 'l10n_tr_tax_exempt')]"/>
+            <field name="parameter_value">4211.33</field>
+            <field name="date_from">2026-01-01</field>
+        </record>
+
+        <!-- 3. 2026 Damga Vergisi (DV) İstisnası (250,70 TL) -->
+        <record id="rule_parameter_value_stamp_tax_exempt_2026" model="hr.rule.parameter.value">
+            <field name="rule_parameter_id" search="[('code', '=', 'l10n_tr_stamp_tax_exempt')]"/>
+            <field name="parameter_value">250.70</field>
+            <field name="date_from">2026-01-01</field>
+        </record>
+    </data>
+</odoo>

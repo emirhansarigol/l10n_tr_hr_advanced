@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_version_view_form_inherit_yol_yemek" model="ir.ui.view">
+        <field name="name">hr.version.form.inherit.yol.yemek</field>
+        <field name="model">hr.version</field>
+
+        <!-- Bulduğumuz doğru ID -->
+        <field name="inherit_id" ref="hr.hr_contract_template_form_view"/>
+
+        <field name="arch" type="xml">
+            <!-- Maaş alanının (wage) içinde bulunduğu sekmeyi (page) bul ve hemen ardına yeni sekme ekle -->
+            <xpath expr="//page[.//field[@name='wage']]" position="after">
+                <page string="Yan Haklar ve Bordro" name="yan_haklar_page">
+                    <group>
+                        <!-- Sol Sütun -->
+                        <group string="Ulaşım / Yol">
+                            <field name="yol_yardim_ucreti" string="Günlük Yol Yardım Ücreti"/>
+                        </group>
+                        <!-- Sağ Sütun -->
+                        <group string="Beslenme / Yemek">
+                            <field name="yemek_yardim_ucreti" string="Günlük Yemek Yardım Ücreti"/>
+                        </group>
+                        <!-- YENİ: SGK ve Teşvik Ayarları -->
+                        <group string="SGK Ayarları">
+                            <field name="sgk_kanun_no"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

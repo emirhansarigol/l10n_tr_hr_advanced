@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+
+# Mac OS
+.DS_Store
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp

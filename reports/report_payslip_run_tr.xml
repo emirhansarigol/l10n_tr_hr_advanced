@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- 0. KENDİ ÖZEL YATAY (LANDSCAPE) KAĞIT FORMATIMIZI YARATIYORUZ -->
+        <record id="paperformat_carsaf_bordro_landscape" model="report.paperformat">
+            <field name="name">A4 Yatay (Çarşaf Bordro)</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">5</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- 1. YAZDIRMA AKSİYONU -->
+        <record id="action_report_payslip_carsaf_tr" model="ir.actions.report">
+            <field name="name">Detaylı Çarşaf Bordro (TR)</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_tr_hr_advanced.report_payslip_carsaf_tr</field>
+            <field name="report_file">l10n_tr_hr_advanced.report_payslip_carsaf_tr</field>
+            <field name="print_report_name">'Carsaf_Bordro_' + time.strftime('%Y%m%d')</field>
+            <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="l10n_tr_hr_advanced.paperformat_carsaf_bordro_landscape"/>
+        </record>
+
+        <!-- 2. LİSTE EKRANINA BUTON EKLEME -->
+        <record id="view_hr_payslip_tree_carsaf_inherit" model="ir.ui.view">
+            <field name="name">hr.payslip.tree.carsaf.inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="%(l10n_tr_hr_advanced.action_report_payslip_carsaf_tr)d"
+                            type="action"
+                            string="Çarşaf Bordroyu Görüntüle"
+                            class="btn-primary"
+                            icon="fa-file-pdf-o"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- 3. ZİRVE/LUCA TİPİ DETAYLI ÇARŞAF BORDRO ŞABLONU -->
+        <template id="report_payslip_carsaf_tr">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+
+                    <style>
+                        .carsaf-page { font-family: 'Arial', sans-serif; font-size: 7px; color: #000; width: 100%; }
+                        .carsaf-table { width: 100%; border-collapse: collapse; margin-top: 5px; }
+                        .carsaf-table th, .carsaf-table td { border: 0.5px solid #000; padding: 1px 2px; vertical-align: middle; }
+                        .text-center { text-align: center; }
+                        .text-right { text-align: right; }
+                        .text-left { text-align: left; }
+                        .fw-bold { font-weight: bold; }
+                        .bg-gray { background-color: #f0f0f0; }
+                        .no-border-table td { border: none !important; padding: 1px; }
+                        .title-header { font-size: 11px; font-weight: bold; text-align: center; margin-bottom: 10px; }
+                    </style>
+
+                    <div class="page carsaf-page">
+
+                        <div class="title-header">
+                            <t t-set="month_name" t-value="docs[0].date_from.strftime('%B').upper()"/>
+                            <t t-set="year_name" t-value="docs[0].date_from.strftime('%Y')"/>
+                            <span t-esc="month_name"/> / <span t-esc="year_name"/> ÜCRET BORDROSU
+                        </div>
+
+                        <table style="width: 100%; margin-bottom: 5px; border: 1px solid #000; font-size: 8px;">
+                            <tr>
+                                <td style="width: 10%;" class="text-right fw-bold">Firma Ünvanı :</td>
+                                <td style="width: 40%;"><span t-esc="docs[0].company_id.name"/></td>
+                                <td style="width: 15%;" class="text-right fw-bold">SGK İşyeri No :</td>
+                                <td style="width: 35%;"><span t-esc="docs[0].company_id.company_registry"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right fw-bold">Merkez Adres :</td>
+                                <td><span t-esc="docs[0].company_id.street"/> <span t-esc="docs[0].company_id.city"/></td>
+                                <td class="text-right fw-bold">Mersis No :</td>
+                                <td><span t-esc="docs[0].company_id.vat"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right fw-bold">Vergi Dairesi/No :</td>
+                                <td><span t-esc="docs[0].company_id.vat"/></td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </table>
+
+                        <table class="carsaf-table">
+                            <thead>
+                                <tr class="text-center fw-bold bg-gray">
+                                    <th rowspan="2" style="width: 2%;">Sıra<br/>No</th>
+                                    <th style="width: 10%;">Adı-Soyadı</th>
+                                    <th>İş.Gir.Tar.</th>
+                                    <th>Çal.<br/>Gn.</th>
+                                    <th>Hf.s.<br/>Gn.</th>
+                                    <th>Gen<br/>Tat.</th>
+                                    <th>Ücr<br/>İzin</th>
+                                    <th>Sıh.<br/>İzin</th>
+                                    <th>Yıl.<br/>İzin</th>
+                                    <th>Maz<br/>İzin</th>
+                                    <th>Kıs.<br/>Sür</th>
+                                    <th>Ücr.<br/>Gn.</th>
+                                    <th>Pr.Gn<br/>Saati</th>
+                                    <th>Gn.Br.Üc.</th>
+                                    <th>Brüt Ücret</th>
+                                    <th>Fazla Mes.</th>
+                                    <th>Vergi Matrahı</th>
+                                    <th>Sigorta Mat.</th>
+                                    <th>Gelir Ver.</th>
+                                    <th>Sigorta Kes.</th>
+                                    <th>Gelir Ver.İst.</th>
+                                    <th>Vergi İnd.</th>
+                                    <th>Net Ücret</th>
+                                    <th rowspan="2" style="width: 4%;">İmza</th>
+                                </tr>
+                                <tr class="text-center fw-bold bg-gray">
+                                    <th>T.C.Kimlik No | Ücret Şekli</th>
+                                    <th>İş.Çık.Tar.</th>
+                                    <th colspan="9"></th>
+                                    <th>Kanun No.</th>
+                                    <th>Brüt Toplam</th>
+                                    <th>Sair Öde.</th>
+                                    <th>Dev.Ver.Mat.</th>
+                                    <th>Damga Ver.</th>
+                                    <th>As.Geç.İnd.</th>
+                                    <th>İşs.Sig.Kes.</th>
+                                    <th>İşv.SGK İst.</th>
+                                    <th>Sair Kes.</th>
+                                    <th>Ödenecek</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="tot_basic" t-value="0.0"/><t t-set="tot_gross" t-value="0.0"/>
+                                <t t-set="tot_overtime" t-value="0.0"/><t t-set="tot_alw" t-value="0.0"/>
+                                <t t-set="tot_taxb" t-value="0.0"/><t t-set="tot_ssibase" t-value="0.0"/>
+                                <t t-set="tot_btaxnet" t-value="0.0"/><t t-set="tot_ssie" t-value="0.0"/>
+                                <t t-set="tot_ssid" t-value="0.0"/><t t-set="tot_stax" t-value="0.0"/>
+                                <t t-set="tot_gv_ist" t-value="0.0"/><t t-set="tot_dv_ist" t-value="0.0"/>
+                                <t t-set="tot_sair_kes" t-value="0.0"/><t t-set="tot_net" t-value="0.0"/>
+                                <t t-set="tot_ssicded" t-value="0.0"/>
+                                <t t-set="tot_ssiucded" t-value="0.0"/>
+                                <t t-set="tot_tesvik" t-value="0.0"/>
+                                <t t-set="tot_btnet" t-value="0.0"/>
+
+                                <t t-foreach="docs" t-as="slip">
+                                    <t t-set="wd_normal" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code == 'WORK100' or 'Normal' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_haftasonu" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code == 'HAFTASONU' or 'Hafta Sonu' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_gentatil" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: 'Genel Tatil' in w.work_entry_type_id.name or 'Resmi' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_ucr_izin" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: 'Ücretli İzin' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_rapor" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: 'Hastalık' in w.work_entry_type_id.name or 'Rapor' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_yillik" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: 'Yıllık İzin' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_mazeret" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: 'Mazeret' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+
+                                    <!-- KUSURSUZ GÜN HESAPLAMASI (ÇARŞAF İÇİN) -->
+                                    <t t-set="wd_ucretsiz" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code in ['LEAVE90', 'UCRETSIZ', 'UNPAID', 'ODENMEMIS'] or 'Ödenmemiş' in w.work_entry_type_id.name or 'Ücretsiz' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_out" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code == 'OUT' or 'Sözleşme' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+
+                                    <t t-if="wd_out == 0">
+                                        <t t-set="odenecek_gun" t-value="30.0 - wd_ucretsiz"/>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="odenecek_gun" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code not in ['MESAI', 'OT', 'OUT'] and 'Mesai' not in w.work_entry_type_id.name and 'Sözleşme' not in w.work_entry_type_id.name).mapped('number_of_days')) - wd_ucretsiz"/>
+                                    </t>
+
+                                    <t t-set="toplam_gun" t-value="sum(slip.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code not in ['MESAI', 'OT'] and 'Mesai' not in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="pr_saat" t-value="(toplam_gun or 0.0) * 7.5"/>
+
+                                    <t t-set="basic" t-value="sum(slip.line_ids.filtered(lambda l: l.code == 'BASIC').mapped('total')) or 0.0"/>
+
+                                    <t t-set="sozlesme_maasi" t-value="(basic / odenecek_gun * 30.0) if odenecek_gun > 0 else basic"/>
+                                    <t t-set="gn_br_uc" t-value="(sozlesme_maasi / 30.0) if sozlesme_maasi else 0.0"/>
+
+                                    <t t-set="overtime" t-value="sum(slip.line_ids.filtered(lambda l: l.code == 'OVERTIME').mapped('total')) or 0.0"/>
+                                    <t t-set="alw" t-value="sum(slip.line_ids.filtered(lambda l: l.category_id.code == 'ALW' and l.code not in ['BASIC', 'GROSS', 'OVERTIME']).mapped('total')) or 0.0"/>
+                                    <t t-set="gross" t-value="(basic or 0.0) + (overtime or 0.0) + (alw or 0.0)"/>
+
+                                    <t t-set="taxb" t-value="sum(slip.line_ids.filtered(lambda l: l.code == 'TAXB').mapped('total')) or 0.0"/>
+                                    <t t-set="ytdgross" t-value="sum(slip.line_ids.filtered(lambda l: l.code == 'YTDGROSS').mapped('total')) or 0.0"/>
+                                    <t t-set="ssibase" t-value="(basic or 0.0) + (overtime or 0.0)"/>
+                                    <t t-set="ssicded" t-value="sum(slip.line_ids.filtered(lambda l: l.code == 'SSICDED').mapped('total')) or 0.0"/>
+                                    <t t-set="ssiucded" t-value="sum(slip.line_ids.filtered(lambda l: l.code == 'SSIUCDED').mapped('total')) or 0.0"/>
+                                    <t t-set="tesvik" t-value="sum(slip.line_ids.filtered(lambda l: l.code == 'TESVIK_5510').mapped('total')) or 0.0"/>
+
+                                    <t t-set="ssie" t-value="abs(sum(slip.line_ids.filtered(lambda l: l.code == 'SSIEDED').mapped('total')) or 0.0)"/>
+                                    <t t-set="ssid" t-value="abs(sum(slip.line_ids.filtered(lambda l: l.code == 'SSIDED').mapped('total')) or 0.0)"/>
+                                    <t t-set="btnet" t-value="abs(sum(slip.line_ids.filtered(lambda l: l.code == 'BTNET').mapped('total')) or 0.0)"/>
+                                    <t t-set="btaxnet" t-value="abs(sum(slip.line_ids.filtered(lambda l: l.code == 'BTAXNET').mapped('total')) or 0.0)"/>
+                                    <t t-set="stax" t-value="abs(sum(slip.line_ids.filtered(lambda l: l.code == 'STAX').mapped('total')) or 0.0)"/>
+
+                                    <t t-set="sair_kes" t-value="abs(sum(slip.line_ids.filtered(lambda l: l.category_id.code == 'DED' and l.code not in ['SSIEDED', 'SSIDED', 'BTNET', 'BTAXNET', 'STAX']).mapped('total')) or 0.0)"/>
+
+                                    <t t-set="gv_ist" t-value="(btaxnet or 0.0) - (btnet or 0.0)"/>
+                                    <t t-set="tam_dv" t-value="round((gross or 0.0) * 0.00759, 2)"/>
+                                    <t t-set="dv_ist" t-value="abs(tam_dv or 0.0) - (stax or 0.0)"/>
+
+                                    <t t-set="net" t-value="(gross or 0.0) - ((ssie or 0.0) + (ssid or 0.0) + (btnet or 0.0) + (stax or 0.0) + (sair_kes or 0.0))"/>
+
+                                    <t t-set="tot_basic" t-value="(tot_basic or 0.0) + (basic or 0.0)"/>
+                                    <t t-set="tot_gross" t-value="(tot_gross or 0.0) + (gross or 0.0)"/>
+                                    <t t-set="tot_overtime" t-value="(tot_overtime or 0.0) + (overtime or 0.0)"/>
+                                    <t t-set="tot_alw" t-value="(tot_alw or 0.0) + (alw or 0.0)"/>
+                                    <t t-set="tot_taxb" t-value="(tot_taxb or 0.0) + (taxb or 0.0)"/>
+                                    <t t-set="tot_ssibase" t-value="(tot_ssibase or 0.0) + (ssibase or 0.0)"/>
+                                    <t t-set="tot_btaxnet" t-value="(tot_btaxnet or 0.0) + (btaxnet or 0.0)"/>
+                                    <t t-set="tot_btnet" t-value="(tot_btnet or 0.0) + (btnet or 0.0)"/>
+                                    <t t-set="tot_ssie" t-value="(tot_ssie or 0.0) + (ssie or 0.0)"/>
+                                    <t t-set="tot_ssid" t-value="(tot_ssid or 0.0) + (ssid or 0.0)"/>
+                                    <t t-set="tot_stax" t-value="(tot_stax or 0.0) + (stax or 0.0)"/>
+                                    <t t-set="tot_gv_ist" t-value="(tot_gv_ist or 0.0) + (gv_ist or 0.0)"/>
+                                    <t t-set="tot_dv_ist" t-value="(tot_dv_ist or 0.0) + (dv_ist or 0.0)"/>
+                                    <t t-set="tot_sair_kes" t-value="(tot_sair_kes or 0.0) + (sair_kes or 0.0)"/>
+                                    <t t-set="tot_net" t-value="(tot_net or 0.0) + (net or 0.0)"/>
+                                    <t t-set="tot_ssicded" t-value="(tot_ssicded or 0.0) + (ssicded or 0.0)"/>
+                                    <t t-set="tot_ssiucded" t-value="(tot_ssiucded or 0.0) + (ssiucded or 0.0)"/>
+                                    <t t-set="tot_tesvik" t-value="(tot_tesvik or 0.0) + (tesvik or 0.0)"/>
+
+                                    <tr>
+                                        <td rowspan="2" class="text-center"><span t-esc="slip_index + 1"/></td>
+                                        <td class="fw-bold"><span t-esc="slip.employee_id.name"/></td>
+                                        <td class="text-center"><span t-field="slip.employee_id.contract_date_start"/></td>
+
+                                        <td class="text-center"><span t-esc="wd_normal" t-options='{"widget": "float", "precision": 1}'/></td>
+                                        <td class="text-center"><span t-esc="wd_haftasonu" t-options='{"widget": "float", "precision": 1}'/></td>
+                                        <td class="text-center"><t t-if="wd_gentatil > 0"><span t-esc="wd_gentatil" t-options='{"widget": "float", "precision": 1}'/></t><t t-else="">0</t></td>
+                                        <td class="text-center"><t t-if="wd_ucr_izin > 0"><span t-esc="wd_ucr_izin" t-options='{"widget": "float", "precision": 1}'/></t><t t-else="">0</t></td>
+                                        <td class="text-center"><t t-if="wd_rapor > 0"><span t-esc="wd_rapor" t-options='{"widget": "float", "precision": 1}'/></t><t t-else="">0</t></td>
+                                        <td class="text-center"><t t-if="wd_yillik > 0"><span t-esc="wd_yillik" t-options='{"widget": "float", "precision": 1}'/></t><t t-else="">0</t></td>
+                                        <td class="text-center"><t t-if="wd_mazeret > 0"><span t-esc="wd_mazeret" t-options='{"widget": "float", "precision": 1}'/></t><t t-else="">0</t></td>
+                                        <td class="text-center"><t t-if="wd_ucretsiz > 0"><span t-esc="wd_ucretsiz" t-options='{"widget": "float", "precision": 1}'/></t><t t-else="">0</t></td>
+
+                                        <td class="text-center"><span t-esc="odenecek_gun" t-options='{"widget": "float", "precision": 1}'/></td>
+                                        <td class="text-center"><span t-esc="odenecek_gun * 7.5" t-options='{"widget": "float", "precision": 1}'/></td>
+
+                                        <td class="text-right"><span t-esc="gn_br_uc" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="basic" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="overtime" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="taxb" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="ssibase" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="btaxnet" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="ssie" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="gv_ist" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right">0,00</td>
+                                        <td class="text-right"><span t-esc="net" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td rowspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center"><span t-esc="slip.employee_id.identification_id"/> | AYLIK</td>
+                                        <td class="text-center"><span t-field="slip.employee_id.departure_date"/></td>
+                                        <td colspan="9"></td>
+                                        <td class="text-center">05746</td>
+                                        <td class="text-right"><span t-esc="gross" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="alw" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="ytdgross" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="stax" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right">0,00</td>
+                                        <td class="text-right"><span t-esc="ssid" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right">0,00</td>
+                                        <td class="text-right"><span t-esc="sair_kes" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="text-right"><span t-esc="net" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+
+                                    <t t-foreach="slip.line_ids.filtered(lambda l: l.category_id.code == 'ALW' and l.code not in ['BASIC', 'GROSS', 'OVERTIME'] and l.total != 0)" t-as="ek_satir">
+                                        <tr>
+                                            <td colspan="2" class="text-right" style="border: none !important;"><span t-esc="ek_satir.name"/> :</td>
+                                            <td colspan="2" class="text-left" style="color: blue; border: none !important;"> <span t-esc="ek_satir.total" t-options='{"widget": "float", "precision": 2}'/></td>
+                                            <td colspan="20" style="border: none !important;"></td>
+                                        </tr>
+                                    </t>
+                                </t>
+
+                                <tr>
+                                    <td colspan="11" style="border: none !important;"></td>
+                                    <td colspan="2" class="fw-bold bg-gray text-center">TOPLAM :</td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_basic" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_overtime" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_taxb" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_ssibase" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_btaxnet" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_ssie" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_gv_ist" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray">0,00</td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_net" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td rowspan="2" style="border: none !important;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="13" style="border: none !important;"></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_gross" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_alw" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray">-</td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_stax" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray">0,00</td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_ssid" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray">0,00</td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_sair_kes" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="text-right fw-bold bg-gray"><span t-esc="tot_net" t-options='{"widget": "float", "precision": 2}'/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- TAHAKKUK BİLGİLERİ -->
+                        <div style="width: 70%; margin: 15px auto;">
+                            <table class="carsaf-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="4" class="text-center fw-bold bg-gray" style="font-size: 9px;">TAHAKKUK BİLGİLERİ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="isveren_sgk" t-value="tot_ssicded"/>
+                                    <t t-set="isveren_issizlik" t-value="tot_ssiucded"/>
+                                    <t t-set="ind_sgk_isveren" t-value="tot_tesvik"/>
+                                    <t t-set="genel_tahakkuk_sol" t-value="(tot_gross or 0.0) + (isveren_sgk or 0.0) + (isveren_issizlik or 0.0)"/>
+                                    <t t-set="odenecek_sgk" t-value="(tot_ssie or 0.0) + (isveren_sgk or 0.0)"/>
+                                    <t t-set="odenecek_issizlik" t-value="(tot_ssid or 0.0) + (isveren_issizlik or 0.0)"/>
+                                    <t t-set="genel_tahakkuk_sag" t-value="(tot_net or 0.0) + (odenecek_sgk or 0.0) + (odenecek_issizlik or 0.0) + (tot_btnet or 0.0) + (tot_stax or 0.0) + (tot_sair_kes or 0.0)"/>
+
+                                    <tr>
+                                        <td class="fw-bold text-right">Aylık Ücretler Toplamı :</td><td class="text-right"><span t-esc="tot_basic" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right">Ödenecek Net Ücretler :</td><td class="text-right"><span t-esc="tot_net" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right">Fazla Mesai Toplamı :</td><td class="text-right"><span t-esc="tot_overtime" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right">Ödenecek SGK Primi :</td><td class="text-right"><span t-esc="odenecek_sgk" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right">Sair Ödemeler Toplamı :</td><td class="text-right"><span t-esc="tot_alw" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right">Ödenecek Gelir Vergisi :</td><td class="text-right"><span t-esc="tot_btnet" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right">İşveren SGK Hissesi :</td><td class="text-right"><span t-esc="isveren_sgk" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right">Ödenecek Damga Vergisi :</td><td class="text-right"><span t-esc="tot_stax" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right">İşveren İşsizlik Sig. Kesintisi :</td><td class="text-right"><span t-esc="isveren_issizlik" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right">Ödenecek İşsizlik Sig. Kesintisi :</td><td class="text-right"><span t-esc="odenecek_issizlik" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td class="fw-bold text-right">Sair Kesintiler :</td><td class="text-right"><span t-esc="tot_sair_kes" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right bg-gray">TOPLAM :</td><td class="text-right bg-gray fw-bold"><span t-esc="genel_tahakkuk_sol" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right bg-gray">TOPLAM :</td><td class="text-right bg-gray fw-bold"><span t-esc="genel_tahakkuk_sag" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right">Toplam SGK Primi :</td><td class="text-right"><span t-esc="(odenecek_sgk or 0.0) + (odenecek_issizlik or 0.0)" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right">İndirilecek Gelir Vergisi :</td><td class="text-right"><span t-esc="tot_gv_ist" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right">İndirilecek SGK İşveren Payı :</td><td class="text-right"><span t-esc="ind_sgk_isveren" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="fw-bold text-right">İndirilecek Damga Vergisi :</td><td class="text-right"><span t-esc="tot_dv_ist" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-right">Net Ödenecek SGK Primi :</td><td class="text-right"><span t-esc="((odenecek_sgk or 0.0) + (odenecek_issizlik or 0.0)) - (ind_sgk_isveren or 0.0)" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

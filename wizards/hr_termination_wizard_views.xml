@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_termination_wizard_form" model="ir.ui.view">
+        <field name="name">hr.termination.wizard.form</field>
+        <field name="model">hr.termination.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Terminate Contract and Calculate Severance">
+                <sheet>
+                    <group>
+                        <group string="Termination Details">
+                            <field name="employee_id"/>
+                            <field name="termination_date"/>
+                            <field name="iskur_reason_id"/>
+                        </group>
+                        <group string="Options">
+                            <field name="has_notice_period_used"/>
+                        </group>
+                    </group>
+                    <group string="Calculated Compensations" class="mt-4 bg-light p-3">
+                        <field name="currency_id" invisible="1"/>
+
+                        <field name="severance_pay" widget="monetary" readonly="1" options="{'currency_field': 'currency_id'}"/>
+                        <field name="notice_pay" widget="monetary" readonly="1" options="{'currency_field': 'currency_id'}"/>
+
+                        <div class="text-danger mt-2" invisible="severance_pay &gt; 0">
+                            <strong>Note:</strong> Severance Pay is 0. Either the employee worked less than 365 days, or the exit reason does not grant severance rights.
+                        </div>
+                        <field name="severance_pay" widget="monetary" readonly="1" options="{'currency_field': 'currency_id'}"/>
+                        <field name="notice_pay" widget="monetary" readonly="1" options="{'currency_field': 'currency_id'}"/>
+                        
+                        <div class="text-danger mt-2" invisible="severance_pay &gt; 0">
+                            <strong>Note:</strong> Severance Pay is 0. Either the employee worked less than 365 days, or the exit reason does not grant severance rights.
+                        </div>
+                    </group>
+                    <group string="Accounting Details" invisible="severance_pay == 0 and notice_pay == 0">
+                        <field name="journal_id" options="{'no_create': True}"/>
+                        <field name="expense_account_id" options="{'no_create': True}"/>
+                        <field name="payable_account_id" options="{'no_create': True}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm Termination" name="action_confirm_termination" type="object" class="btn-danger"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

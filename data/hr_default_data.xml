@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- 1. PUANTAJ KAYDI TÜRÜ (Hafta Sonu) -->
+        <record id="work_entry_type_haftasonu" model="hr.work.entry.type">
+            <field name="name">Hafta Sonu</field>
+            <field name="code">HAFTASONU</field>
+            <field name="color">3</field>
+        </record>
+
+        <!-- 2. İZİN TÜRÜ (Hafta Sonu - Limitsiz ve Onaysız) -->
+        <record id="leave_type_haftasonu" model="hr.leave.type">
+            <field name="name">Hafta Sonu</field>
+            <field name="requires_allocation">no</field>
+            <field name="leave_validation_type">no_validation</field>
+            <field name="work_entry_type_id" ref="work_entry_type_haftasonu"/>
+        </record>
+
+        <!-- 3. TÜRKİYE İÇİN ÖZEL ÇALIŞMA TAKVİMİ (Hafta Sonu Ücretli) -->
+        <record id="resource_calendar_tr_haftasonu" model="resource.calendar">
+            <field name="name">Türkiye Standart Takvimi (Ücretli Hafta Sonu)</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="attendance_ids" eval="[
+                (0, 0, {'name': 'Pazartesi Sabah', 'dayofweek': '0', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning'}),
+                (0, 0, {'name': 'Pazartesi Öğleden', 'dayofweek': '0', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon'}),
+
+                (0, 0, {'name': 'Salı Sabah', 'dayofweek': '1', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning'}),
+                (0, 0, {'name': 'Salı Öğleden', 'dayofweek': '1', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon'}),
+
+                (0, 0, {'name': 'Çarşamba Sabah', 'dayofweek': '2', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning'}),
+                (0, 0, {'name': 'Çarşamba Öğleden', 'dayofweek': '2', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon'}),
+
+                (0, 0, {'name': 'Perşembe Sabah', 'dayofweek': '3', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning'}),
+                (0, 0, {'name': 'Perşembe Öğleden', 'dayofweek': '3', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon'}),
+
+                (0, 0, {'name': 'Cuma Sabah', 'dayofweek': '4', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning'}),
+                (0, 0, {'name': 'Cuma Öğleden', 'dayofweek': '4', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon'}),
+
+                (0, 0, {'name': 'Cumartesi Sabah', 'dayofweek': '5', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'work_entry_type_id': ref('work_entry_type_haftasonu')}),
+                (0, 0, {'name': 'Cumartesi Öğleden', 'dayofweek': '5', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon', 'work_entry_type_id': ref('work_entry_type_haftasonu')}),
+
+                (0, 0, {'name': 'Pazar Sabah', 'dayofweek': '6', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'work_entry_type_id': ref('work_entry_type_haftasonu')}),
+                (0, 0, {'name': 'Pazar Öğleden', 'dayofweek': '6', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon', 'work_entry_type_id': ref('work_entry_type_haftasonu')})
+            ]"/>
+        </record>
+
+
+    </data>
+
+
+
+</odoo>

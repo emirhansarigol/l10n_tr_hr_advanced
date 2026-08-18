@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_iskur_reason,hr.iskur.reason,model_hr_iskur_reason,hr.group_hr_user,1,0,0,0
+access_hr_iskur_reason_manager,hr.iskur.reason.manager,model_hr_iskur_reason,group_hr_kvkk_manager,1,1,1,1
+access_hr_business_line,hr.business.line,model_hr_business_line,hr.group_hr_user,1,0,0,0
+access_hr_business_line_manager,hr.business.line.manager,model_hr_business_line,group_hr_kvkk_manager,1,1,1,1
+access_hr_termination_wizard,hr.termination.wizard,model_hr_termination_wizard,base.group_user,1,1,1,1
+access_hr_occupation_code,hr.occupation.code,model_hr_occupation_code,hr.group_hr_user,1,0,0,0
+access_hr_occupation_code_manager,hr.occupation.code.manager,model_hr_occupation_code,group_hr_kvkk_manager,1,1,1,1
+access_hr_sgk_belge_turu,hr.sgk.belge.turu,model_hr_sgk_belge_turu,base.group_user,1,1,1,1
+access_hr_missing_day_reason,hr.missing.day.reason,model_hr_missing_day_reason,hr.group_hr_user,1,1,1,1
+access_hr_sgk_sigorta_turu,hr.sgk.sigorta.turu,model_hr_sgk_sigorta_turu,hr.group_hr_user,1,1,1,1
+access_hr_sgk_gorev_kodu,hr.sgk.gorev.kodu,model_hr_sgk_gorev_kodu,hr.group_hr_user,1,1,1,1
+
+

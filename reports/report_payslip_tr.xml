@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payslip_tr">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+
+                    <style>
+                        .bordro-container { font-family: Arial, sans-serif; font-size: 11px; color: black; }
+                        .bordro-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+                        .bordro-table th, .bordro-table td { border: 1px solid #000; padding: 4px; vertical-align: middle; }
+                        .bordro-header { background-color: #f2f2f2; font-weight: bold; text-align: center; }
+                        .text-right { text-align: right; }
+                        .text-center { text-align: center; }
+                        .fw-bold { font-weight: bold; }
+                    </style>
+
+                    <div class="page bordro-container">
+
+                        <table class="bordro-table">
+                            <tr>
+                                <td width="30%" class="text-center">
+                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 60px;" alt="Logo"/>
+                                    <br/><span class="fw-bold" t-esc="o.company_id.name"/>
+                                </td>
+                                <td width="70%">
+                                    <table style="width: 100%; border: none;">
+                                        <tr>
+                                            <td colspan="4" class="bordro-header" style="border:none; border-bottom: 1px solid black;">FİRMA BİLGİLERİ</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border:none;" class="fw-bold">Merkez Adres:</td>
+                                            <td style="border:none;" t-esc="o.company_id.street"/>
+                                            <td style="border:none;" class="fw-bold">Vergi No:</td>
+                                            <td style="border:none;"><span t-esc="o.company_id.sgk_vergi_no"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border:none;" class="fw-bold">Firma SGK Sicil No:</td>
+                                            <td style="border:none;" colspan="3"><span t-esc="o.company_id.sgk_isyeri_sicil"/></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-4" style="padding-right: 0;">
+                                <table class="bordro-table">
+                                    <tr><th colspan="2" class="bordro-header">PERSONEL BİLGİLERİ</th></tr>
+                                    <tr><td>Bordro Tar.</td><td><span t-field="o.date_to"/></td></tr>
+                                    <tr><td>Departman</td><td><span t-esc="o.employee_id.department_id.name"/></td></tr>
+                                    <tr><td>Meslek Grubu</td><td><span t-esc="o.employee_id.job_id.name"/></td></tr>
+                                    <tr><td>Adı Soyadı</td><td class="fw-bold"><span t-esc="o.employee_id.name"/></td></tr>
+                                    <tr><td>T.C. Kimlik No</td><td><span t-esc="o.employee_id.identification_id"/></td></tr>
+                                    <tr><td>SGK Sicil No</td><td><span t-esc="o.employee_id.ssnid"/></td></tr>
+                                    <tr><td>İşe Giriş Tar.</td><td><span t-field="o.employee_id.contract_date_start"/></td></tr>
+                                    <tr><td>Cinsiyeti</td><td><span t-field="o.employee_id.sex"/></td></tr>
+
+                                    <!-- KUSURSUZ GÜN HESAPLAMASI (ÜCRETSİZ + SÖZLEŞME DIŞI) -->
+                                    <t t-set="wd_ucretsiz" t-value="sum(o.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code in ['LEAVE90', 'UCRETSIZ', 'UNPAID', 'ODENMEMIS'] or 'Ödenmemiş' in w.work_entry_type_id.name or 'Ücretsiz' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+                                    <t t-set="wd_out" t-value="sum(o.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code == 'OUT' or 'Sözleşme' in w.work_entry_type_id.name).mapped('number_of_days')) or 0.0"/>
+
+                                    <t t-if="wd_out == 0">
+                                        <t t-set="odenecek_gun" t-value="30.0 - wd_ucretsiz"/>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="odenecek_gun" t-value="sum(o.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code not in ['MESAI', 'OT', 'OUT'] and 'Mesai' not in w.work_entry_type_id.name and 'Sözleşme' not in w.work_entry_type_id.name).mapped('number_of_days')) - wd_ucretsiz"/>
+                                    </t>
+
+                                    <t t-set="basic_wage" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'BASIC').mapped('total'))"/>
+                                    <t t-set="sozlesme_maasi" t-value="(basic_wage / odenecek_gun * 30.0) if odenecek_gun > 0 else basic_wage"/>
+
+                                    <t t-set="mesai_tutar_kural" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'OVERTIME').mapped('total'))"/>
+                                    <t t-set="mesai_tutar_puantaj" t-value="sum(o.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code in ['MESAI', 'OT'] or 'Mesai' in w.work_entry_type_id.name).mapped('amount'))"/>
+                                    <t t-set="mesai_tutar" t-value="mesai_tutar_kural if mesai_tutar_kural != 0 else mesai_tutar_puantaj"/>
+                                    <t t-set="alw_total" t-value="sum(o.line_ids.filtered(lambda l: l.category_id.code == 'ALW' and l.code not in ['BASIC', 'GROSS', 'OVERTIME']).mapped('total'))"/>
+                                    <t t-set="gercek_brut" t-value="basic_wage + mesai_tutar + alw_total"/>
+
+                                    <tr>
+                                        <td>Sözleşme Ücreti (Tam Ay)</td>
+                                        <td class="text-right">
+                                            <span t-esc="sozlesme_maasi" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: dimgray;">Tahakkuk Eden Ücret (<span t-esc="odenecek_gun" t-options='{"widget": "float", "precision": 0}'/> Gün)</td>
+                                        <td class="text-right fw-bold">
+                                            <span t-esc="basic_wage" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="col-4" style="padding-right: 0; padding-left: 5px;">
+                                <table class="bordro-table">
+                                    <tr><th colspan="3" class="bordro-header">NORMAL MESAİ VE İZİNLER</th></tr>
+                                    <tr>
+                                        <td class="fw-bold">AÇIKLAMA</td>
+                                        <td class="fw-bold text-center">GÜN</td>
+                                        <td class="fw-bold text-center">SAAT</td>
+                                    </tr>
+
+                                    <t t-set="toplam_gun" t-value="0.0"/>
+                                    <t t-set="toplam_saat" t-value="0.0"/>
+
+                                    <t t-foreach="o.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code not in ['MESAI', 'OT'] and 'Mesai' not in w.work_entry_type_id.name)" t-as="wd">
+                                        <t t-if="wd.number_of_days > 0 or wd.number_of_hours > 0">
+                                            <tr>
+                                                <td><span t-esc="wd.work_entry_type_id.name"/></td>
+                                                <td class="text-center"><span t-esc="wd.number_of_days" t-options='{"widget": "float", "precision": 1}'/></td>
+                                                <td class="text-center"><span t-esc="wd.number_of_hours" t-options='{"widget": "float", "precision": 1}'/></td>
+                                            </tr>
+                                            <t t-set="toplam_gun" t-value="toplam_gun + wd.number_of_days"/>
+                                            <t t-set="toplam_saat" t-value="toplam_saat + wd.number_of_hours"/>
+                                        </t>
+                                    </t>
+
+                                    <tr style="background-color: #f9f9f9;">
+                                        <td class="fw-bold">TOPLAM</td>
+                                        <td class="text-center fw-bold"><span t-esc="toplam_gun" t-options='{"widget": "float", "precision": 1}'/></td>
+                                        <td class="text-center fw-bold"><span t-esc="toplam_saat" t-options='{"widget": "float", "precision": 1}'/></td>
+                                    </tr>
+                                </table>
+
+                                <table class="bordro-table" style="margin-top: 15px;">
+                                    <tr><th colspan="2" class="bordro-header">SGK VE VERGİLER</th></tr>
+                                    <t t-set="ytdgross" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'YTDGROSS').mapped('total'))"/>
+                                    <tr><td>Dev. Vergi Matrahı</td><td class="text-right"><span t-esc="ytdgross" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <t t-set="taxb" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'TAXB').mapped('total'))"/>
+                                    <tr><td>Vergi Matrahı</td><td class="text-right"><span t-esc="taxb" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <t t-set="ssibase" t-value="abs(sum(o.line_ids.filtered(lambda l: l.code == 'SSIEDED').mapped('amount')))"/>
+                                    <tr><td>Sigorta Matrahı</td><td class="text-right"><span t-esc="ssibase" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <t t-set="ssie" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'SSIEDED').mapped('total'))"/>
+                                    <tr><td>Sigorta Kesintisi</td><td class="text-right"><span t-esc="ssie" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <t t-set="unemp" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'SSIDED').mapped('total'))"/>
+                                    <tr><td>İşş. Sig. Kesintisi</td><td class="text-right"><span t-esc="unemp" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <t t-set="btnet" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'BTNET').mapped('total'))"/>
+                                    <tr><td>Gelir Vergisi (İst. Sonrası)</td><td class="text-right"><span t-esc="btnet" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <t t-set="stax" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'STAX').mapped('total'))"/>
+                                    <tr><td>Damga Vergisi (İst. Sonrası)</td><td class="text-right"><span t-esc="stax" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <tr><td colspan="2" class="bordro-header" style="font-size: 9px;">İSTİSNA BİLGİLERİ (Bilgi Amaçlıdır)</td></tr>
+
+                                    <t t-set="tam_dv" t-value="round(gercek_brut * 0.00759, 2)"/>
+                                    <t t-set="dv_istisna_bilgi" t-value="round(abs(tam_dv) - abs(stax), 2)"/>
+                                    <tr><td style="color: gray;">Uygulanan DV İstisnası</td><td class="text-right" style="color: gray;"><span t-esc="dv_istisna_bilgi" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+
+                                    <t t-set="btaxnet" t-value="sum(o.line_ids.filtered(lambda l: l.code == 'BTAXNET').mapped('total'))"/>
+                                    <t t-set="gv_istisna_bilgi" t-value="round(abs(btaxnet) - abs(btnet), 2)"/>
+                                    <tr><td style="color: gray;">Uygulanan GV İstisnası</td><td class="text-right" style="color: gray;"><span t-esc="gv_istisna_bilgi" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td></tr>
+                                </table>
+                            </div>
+
+                            <div class="col-4" style="padding-left: 5px;">
+                                <table class="bordro-table">
+                                    <tr><th colspan="3" class="bordro-header">FAZLA MESAİ</th></tr>
+                                    <tr>
+                                        <td class="fw-bold">AÇIKLAMA</td>
+                                        <td class="fw-bold text-center">SAAT</td>
+                                        <td class="fw-bold text-right">TUTAR</td>
+                                    </tr>
+                                    <t t-set="mesai_saat" t-value="sum(o.worked_days_line_ids.filtered(lambda w: w.work_entry_type_id.code in ['MESAI', 'OT'] or 'Mesai' in w.work_entry_type_id.name).mapped('number_of_hours'))"/>
+                                    <tr>
+                                        <td>Fazla Mesai (1)</td>
+                                        <td class="text-center"><span t-esc="mesai_saat" t-options='{"widget": "float", "precision": 1}'/></td>
+                                        <td class="text-right"><span t-esc="mesai_tutar" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td>
+                                    </tr>
+                                    <tr style="background-color: #f9f9f9;">
+                                        <td class="fw-bold">TOPLAM</td>
+                                        <td class="text-center fw-bold"><span t-esc="mesai_saat" t-options='{"widget": "float", "precision": 1}'/></td>
+                                        <td class="text-right fw-bold"><span t-esc="mesai_tutar" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td>
+                                    </tr>
+                                </table>
+
+                                <table class="bordro-table" style="margin-top: 15px;">
+                                    <tr><th colspan="2" class="bordro-header">EK ÖDEME</th></tr>
+                                    <tr><td class="fw-bold">Açıklama</td><td class="fw-bold text-right">Tutar</td></tr>
+
+                                    <t t-foreach="o.line_ids.filtered(lambda l: l.category_id.code == 'ALW' and l.code not in ['BASIC', 'GROSS', 'OVERTIME'] and l.total != 0)" t-as="alw">
+                                        <tr>
+                                            <td><span t-esc="alw.name"/></td>
+                                            <td class="text-right"><span t-esc="alw.total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td>
+                                        </tr>
+                                    </t>
+                                </table>
+
+                                <table class="bordro-table" style="margin-top: 15px;">
+                                    <tr><th colspan="2" class="bordro-header">NET ÖDENEN</th></tr>
+
+                                    <t t-set="total_deductions" t-value="abs(ssie) + abs(unemp) + abs(btnet) + abs(stax)"/>
+                                    <t t-set="perfect_net" t-value="gercek_brut - total_deductions"/>
+
+                                    <tr>
+                                        <td class="fw-bold" style="font-size: 13px;">ÖDENECEK TUTAR:</td>
+                                        <td class="fw-bold text-right" style="font-size: 13px;">
+                                            <span t-esc="perfect_net" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table class="bordro-table" style="margin-top: 15px; height: 75px;">
+                                    <tr><th class="bordro-header">İMZA</th></tr>
+                                    <tr><td style="vertical-align: bottom; padding-bottom: 5px; text-align: center;">...................................</td></tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-12" style="font-size: 10px; text-align: justify;">
+                                <span><span t-field="o.date_to"/> ayına ait bordromun bir nüshasını aldım. İçeriği ile hemfikir olup, bu içerik bilgilerinden dolayı kurumunuzu ibra ederim. Belirtilen ödenecek ücretimi nakten/hesaben aldım.</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

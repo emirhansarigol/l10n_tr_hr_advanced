@@ -1,0 +1,1246 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * l10n_tr_hr_advanced
+#   * l10n_tr_hr_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-29 08:29+0000\n"
+"PO-Revision-Date: 2026-07-29 08:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields.selection,name:l10n_tr_hr_advanced.selection__hr_employee__sgk_ogrenim_kodu__0
+msgid "0 - Bilinmeyen"
+msgstr "0 - Bilinmeyen"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields.selection,name:l10n_tr_hr_advanced.selection__hr_employee__sgk_ogrenim_kodu__1
+msgid "1 - Okur yazar değil"
+msgstr "1 - Okur yazar değil"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields.selection,name:l10n_tr_hr_advanced.selection__hr_employee__sgk_ogrenim_kodu__2
+msgid "2 - İlkokul"
+msgstr "2 - İlkokul"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid "26 Haneli Sicil No"
+msgstr "26 Haneli Sicil No"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "26 Haneli İşyeri Sicil No..."
+msgstr "26 Haneli İşyeri Sicil No..."
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields.selection,name:l10n_tr_hr_advanced.selection__hr_employee__sgk_ogrenim_kodu__4
+msgid "4 - Lise veya dengi"
+msgstr "4 - Lise veya dengi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields.selection,name:l10n_tr_hr_advanced.selection__hr_employee__sgk_ogrenim_kodu__5
+msgid "5 - Yüksek okul veya fakülte"
+msgstr "5 - Yüksek okul veya fakülte"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid ""
+"<strong>Note:</strong> Severance Pay is 0. Either the employee worked less "
+"than 365 days, or the exit reason does not grant severance rights."
+msgstr ""
+"<strong>Not:</strong> Kıdem Tazminatı 0. Personel 365 günden az çalışmış veya "
+"çıkış nedeni tazminat hakkı tanımıyor."
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "API Bağlantı Hatası: %s"
+msgstr "API Bağlantı Hatası: %s"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "API Hatası: %s"
+msgstr "API Hatası: %s"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid "Accounting Details"
+msgstr "Muhasebe Detayları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_nakil_gelis
+msgid "Aynı İşverenden Nakil Geldi?"
+msgstr "Aynı İşverenden Nakil Geldi?"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid "Başarılı!"
+msgstr "Başarılı!"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "Beklenmeyen bir API hatası oluştu: %s"
+msgstr "Beklenmeyen bir API hatası oluştu: %s"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_belge_turu_id
+msgid "Belge Türü (Bulunduğumuz Dönem)"
+msgstr "Belge Türü (Bulunduğumuz Dönem)"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__name
+msgid "Belge Türü Adı"
+msgstr "Belge Türü Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid "Bilgi"
+msgstr "Bilgi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_blood_group
+msgid "Blood Group Card"
+msgstr "Kan Grubu Kartı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_blood_group_fname
+msgid "Blood Group Filename"
+msgstr "Kan Grubu Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,help:l10n_tr_hr_advanced.field_hr_leave_type__sgk_missing_day_reason_id
+msgid ""
+"Bu izin türü kullanıldığında SGK'ya bildirilecek eksik gün nedeni. Yıllık "
+"izin gibi eksik gün sayılmayacaklar için '00' kodunu seçin."
+msgstr ""
+"Bu izin türü kullanıldığında SGK'ya bildirilecek eksik gün nedeni. Yıllık "
+"izin gibi eksik gün sayılmayacaklar için '00' kodunu seçin."
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid "Bu personelin sözleşme başlangıç tarihi yok. Tazminat hesaplanamaz!"
+msgstr "Bu personelin sözleşme başlangıç tarihi yok. Tazminat hesaplanamaz!"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Bulunduğumuz Dönem"
+msgstr "Bulunduğumuz Dönem"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid ""
+"Buraya girilen şifreler, personel işe giriş ve çıkış bildirgelerinin (SGK "
+"Web Servisleri) Odoo üzerinden otomatik gönderilebilmesi için kullanılır."
+msgstr ""
+"Buraya girilen şifreler, personel işe giriş ve çıkış bildirgelerinin (SGK "
+"Web Servisleri) Odoo üzerinden otomatik gönderilebilmesi için kullanılır."
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__name
+msgid "Business Line Name"
+msgstr "İş Kolu Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__csgb_iskolu_id
+msgid "CSGB Business Line"
+msgstr "ÇSGB İş Kolu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_business_line
+msgid "CSGB Business Lines"
+msgstr "ÇSGB İş Kolları"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid "Calculated Compensations"
+msgstr "Hesaplanan Tazminatlar"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__code
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__code
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__code
+msgid "Code"
+msgstr "Kod"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_res_company
+msgid "Companies"
+msgstr "Şirketler"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__company_id
+msgid "Company"
+msgstr "Şirket"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid "Confirm Termination"
+msgstr "Feshi Onayla"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_termination_wizard
+msgid "Contract Termination Wizard"
+msgstr "Sözleşme Fesih Sihirbazı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__create_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__create_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__create_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__create_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__create_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__create_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__create_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__create_date
+msgid "Created on"
+msgstr "Oluşturulma Tarihi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_criminal_record
+msgid "Criminal Record"
+msgstr "Adli Sicil Kaydı (Sabıka)"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_criminal_record_fname
+msgid "Criminal Record Filename"
+msgstr "Adli Sicil Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__currency_id
+msgid "Currency"
+msgstr "Para Birimi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__name
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_diploma
+msgid "Diploma / Graduation Certificate"
+msgstr "Diploma / Mezuniyet Belgesi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_diploma_fname
+msgid "Diploma Filename"
+msgstr "Diploma Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_engelli
+msgid "Disabled"
+msgstr "Engelli"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_leave_type__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_version__display_name
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__display_name
+msgid "Display Name"
+msgstr "Görünüm Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_ogrenim_kodu
+msgid "Education Level Code"
+msgstr "Öğrenim Seviyesi Kodu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_eksik_gun_nedeni_id
+msgid "Eksik Gün Nedeni"
+msgstr "Eksik Gün Nedeni"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Eksik Günleri İzinlerden Çek"
+msgstr "Eksik Günleri İzinlerden Çek"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid ""
+"Eksik günler İzinler modülünden çekildi ve önceki dönem bordro ücretleri "
+"hesaplandı."
+msgstr ""
+"Eksik günler İzinler modülünden çekildi ve önceki dönem bordro ücretleri "
+"hesaplandı."
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_employee
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__employee_id
+msgid "Employee"
+msgstr "Personel"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_version
+msgid "Employee Contract"
+msgstr "Personel Sözleşmesi"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/wizards/hr_termination_wizard.py:0
+msgid "Employee terminated and Journal Entry created successfully."
+msgstr "Personel çıkışı yapıldı ve Yevmiye Kaydı başarıyla oluşturuldu."
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_eski_hukumlu
+msgid "Ex-Convict"
+msgstr "Eski Hükümlü"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__expense_account_id
+msgid "Expense Account (Debit)"
+msgstr "Gider Hesabı (Borç)"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,help:l10n_tr_hr_advanced.field_hr_occupation_code__code
+msgid "Format: 9999.99"
+msgstr "Format: 9999.99"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid ""
+"Geçersiz T.C. Kimlik Numarası. Tam olarak 11 haneli olmalı ve sadece rakam "
+"içermelidir."
+msgstr ""
+"Geçersiz T.C. Kimlik Numarası. Tam olarak 11 haneli olmalı ve sadece rakam "
+"içermelidir."
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Giriş Bildirgesi İndir(PDF)"
+msgstr "Giriş Bildirgesi İndir(PDF)"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_mezuniyet_bolumu
+msgid "Graduation Department"
+msgstr "Mezuniyet Bölümü"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_mezuniyet_yili
+msgid "Graduation Year"
+msgstr "Mezuniyet Yılı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__name
+msgid "Görev Adı"
+msgstr "Görev Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:hr.salary.rule,name:l10n_tr_hr_advanced.hr_salary_rule_yol_yardimi
+msgid "Günlük Yol Yardımı (Puantaja Bağlı)"
+msgstr "Günlük Yol Yardımı (Puantaja Bağlı)"
+
+#. module: l10n_tr_hr_advanced
+#: model:hr.leave.type,name:l10n_tr_hr_advanced.holiday_status_tr_sick
+msgid "Hastalık / Rapor"
+msgstr "Hastalık / Rapor"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_health_report
+msgid "Health Report"
+msgstr "Sağlık Raporu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_health_report_fname
+msgid "Health Report Filename"
+msgstr "Sağlık Raporu Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_leave_type__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_version__id
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__id
+msgid "ID"
+msgstr "ID"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_id_copy_fname
+msgid "ID Copy Filename"
+msgstr "Kimlik Fotokopisi Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__code
+msgid "ISKUR Code"
+msgstr "İŞKUR Kodu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_meslek_kodu_id
+msgid "ISKUR Occupation Code"
+msgstr "İŞKUR Meslek Kodu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_occupation_code
+msgid "ISKUR Occupation Codes"
+msgstr "İŞKUR Meslek Kodları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__iskur_reason_id
+msgid "ISKUR Termination Reason"
+msgstr "İŞKUR Çıkış Nedeni"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_iskur_reason
+msgid "ISKUR Termination Reasons"
+msgstr "İŞKUR Çıkış Nedenleri"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__journal_id
+msgid "Journal"
+msgstr "Yevmiye"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__kvkk_approval_date
+msgid "KVKK Approval Date"
+msgstr "KVKK Onay Tarihi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__kvkk_approved
+msgid "KVKK Explicit Consent Signed"
+msgstr "KVKK Açık Rıza İmzalandı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__code
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__code
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__code
+msgid "Kodu"
+msgstr "Kodu"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Kurum Dönüş Bilgileri"
+msgstr "Kurum Dönüş Bilgileri"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid "Kısmi süreli (Part-time) gün sayısı 1 ile 29 arasında olmalıdır!"
+msgstr "Kısmi süreli (Part-time) gün sayısı 1 ile 29 arasında olmalıdır!"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_business_line__write_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_iskur_reason__write_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__write_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__write_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_belge_turu__write_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_gorev_kodu__write_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__write_date
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme Tarihi"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "Lütfen sunucuya 'zeep' kütüphanesini kurun. (Komut: pip install zeep)"
+msgstr "Lütfen sunucuya 'zeep' kütüphanesini kurun. (Komut: pip install zeep)"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "Lütfen önce Şirket Ayarlarından SGK API şifrelerini tanımlayın!"
+msgstr "Lütfen önce Şirket Ayarlarından SGK API şifrelerini tanımlayın!"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid "Maaş Bilgisi Bulunamadı!"
+msgstr "Maaş Bilgisi Bulunamadı!"
+
+#. module: l10n_tr_hr_advanced
+#: model:hr.leave.type,name:l10n_tr_hr_advanced.holiday_status_tr_other_unpaid
+msgid "Mazeret İzni (Ücretsiz)"
+msgstr "Mazeret İzni (Ücretsiz)"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Meslek ara..."
+msgstr "Meslek ara..."
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_military_cert_fname
+msgid "Military Cert Filename"
+msgstr "Askerlik Durum Belgesi Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_military_cert
+msgid "Military Status Certificate"
+msgstr "Askerlik Durum Belgesi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_nakil_geldigi_sicil
+msgid "Nakil Geldiği İşyeri Sicil"
+msgstr "Nakil Geldiği İşyeri Sicil"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_nakil_gidis_sicil
+msgid "Nakil Gideceği İşyeri Sicil"
+msgstr "Nakil Gideceği İşyeri Sicil"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Nakil İşlemleri (Giriş)"
+msgstr "Nakil İşlemleri (Giriş)"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__notice_pay
+msgid "Notice Pay"
+msgstr "İhbar Tazminatı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__has_notice_period_used
+msgid "Notice Period Used?"
+msgstr "İhbar Süresi Kullanıldı mı?"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_occupation_code__name
+msgid "Occupation Name"
+msgstr "Meslek Adı"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid "Odoo 19 Sözleşmeler/Bordro sekmesinde tanımlı bir maaş bulunamadı."
+msgstr "Odoo 19 Sözleşmeler/Bordro sekmesinde tanımlı bir maaş bulunamadı."
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid "Options"
+msgstr "Seçenekler"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "PDF İndirme Başarılı"
+msgstr "PDF İndirme Başarılı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_kismi_sureli_gun
+msgid "Part-Time Days"
+msgstr "Kısmi Süreli Gün Sayısı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_kismi_sureli
+msgid "Part-Time?"
+msgstr "Kısmi Süreli (Part-Time) mi?"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_photo
+msgid "Passport Photo"
+msgstr "Vesikalık Fotoğraf"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__payable_account_id
+msgid "Payable Account (Credit)"
+msgstr "Ödenecek Hesap (Alacak)"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "Personelin T.C. Kimlik Numarası (Kimlik No) alanı boş olamaz!"
+msgstr "Personelin T.C. Kimlik Numarası (Kimlik No) alanı boş olamaz!"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_photo_fname
+msgid "Photo Filename"
+msgstr "Fotoğraf Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/wizards/hr_termination_wizard.py:0
+msgid ""
+"Please select Journal and Accounts to generate the compensation journal "
+"entry!"
+msgstr ""
+"Tazminat yevmiye kaydını oluşturmak için lütfen Yevmiye ve Hesapları seçin!"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_prim_ikramiye
+msgid "Prim ve İkramiyeler"
+msgstr "Prim ve İkramiyeler"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_missing_day_reason__name
+msgid "Reason"
+msgstr "Nedeni"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_residence_cert
+msgid "Residence Certificate"
+msgstr "İkametgah Belgesi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_residence_cert_fname
+msgid "Residence Certificate Filename"
+msgstr "İkametgah Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.edit_holiday_status_form_tr_inherit
+msgid "SGK (Türkiye) Entegrasyonu"
+msgstr "SGK (Türkiye) Entegrasyonu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.ui.menu,name:l10n_tr_hr_advanced.menu_hr_sgk_settings_main
+msgid "SGK / İŞKUR Tanımları"
+msgstr "SGK / İŞKUR Tanımları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_sgk_belge_turu
+msgid "SGK Belge Türleri"
+msgstr "SGK Belge Türleri"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_leave_type__sgk_missing_day_reason_id
+msgid "SGK Eksik Gün Nedeni"
+msgstr "SGK Eksik Gün Nedeni"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "SGK Employment Registration"
+msgstr "SGK İşe Giriş Bildirgesi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_sgk_entry
+msgid "SGK Entry Declaration"
+msgstr "SGK İşe Giriş Bildirgesi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_sgk_entry_fname
+msgid "SGK Entry Filename"
+msgstr "SGK Giriş Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__is_sgk_entry_generated
+msgid "SGK Entry Generated"
+msgstr "SGK Giriş Üretildi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_sgk_exit
+msgid "SGK Exit Declaration"
+msgstr "SGK İşten Çıkış Bildirgesi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__doc_sgk_exit_fname
+msgid "SGK Exit Filename"
+msgstr "SGK Çıkış Dosya Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__is_sgk_exit_generated
+msgid "SGK Exit Generated"
+msgstr "SGK Çıkış Üretildi"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_sgk_gorev_kodu
+msgid "SGK Görev Kodları"
+msgstr "SGK Görev Kodları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_gorev_kodu_id
+msgid "SGK Görev Kodu"
+msgstr "SGK Görev Kodu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__sgk_kullanici_adi
+msgid "SGK Kullanıcı Adı (İşveren TC)"
+msgstr "SGK Kullanıcı Adı (İşveren TC)"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_missing_day_reason
+msgid "SGK Missing Day Reasons"
+msgstr "SGK Eksik Gün Nedenleri"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "SGK SOAP Hatası: %s"
+msgstr "SGK SOAP Hatası: %s"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_sgk_sigorta_turu
+msgid "SGK Sigorta Türleri"
+msgstr "SGK Sigorta Türleri"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_sigorta_turu_id
+msgid "SGK Sigorta Türü"
+msgstr "SGK Sigorta Türü"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid ""
+"SGK Sistem Hatası!\n"
+"\n"
+"Kod: %s\n"
+"Açıklama: %s"
+msgstr ""
+"SGK Sistem Hatası!\n"
+"\n"
+"Kod: %s\n"
+"Açıklama: %s"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__sgk_sistem_sifre
+msgid "SGK Sistem Şifresi"
+msgstr "SGK Sistem Şifresi"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid "SGK Tescil / API Ayarları"
+msgstr "SGK Tescil / API Ayarları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__sgk_vergi_no
+msgid "SGK Vergi No"
+msgstr "SGK Vergi No"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "SGK WSDL servisine bağlanılamadı! Detay: %s"
+msgstr "SGK WSDL servisine bağlanılamadı! Detay: %s"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid "SGK Web Servis Kullanıcı Bilgileri"
+msgstr "SGK Web Servis Kullanıcı Bilgileri"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid ""
+"SGK ana paketi onayladı ancak detay okunamadı!\n"
+"Yanıt: %s"
+msgstr ""
+"SGK ana paketi onayladı ancak detay okunamadı!\n"
+"Yanıt: %s"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "SGK belgeyi gönderdi ancak PDF verisi okunamadı. Yanıt: %s"
+msgstr "SGK belgeyi gönderdi ancak PDF verisi okunamadı. Yanıt: %s"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "SGK Çıkış Bildirgesi Gönder (API)"
+msgstr "SGK Çıkış Bildirgesi Gönder (API)"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "SGK İşe Giriş Bildirgesi Gönder (API)"
+msgstr "SGK İşe Giriş Bildirgesi Gönder (API)"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "SGK İşe Giriş Referans Kodu bulunamadı!"
+msgstr "SGK İşe Giriş Referans Kodu bulunamadı!"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid ""
+"SGK İşlem Reddedildi!\n"
+"\n"
+"Detay: %s"
+msgstr ""
+"SGK İşlem Reddedildi!\n"
+"\n"
+"Detay: %s"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "SGK İşlemi Başarılı"
+msgstr "SGK İşlemi Başarılı"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "SGK İşten Çıkış Referans Kodu bulunamadı!"
+msgstr "SGK İşten Çıkış Referans Kodu bulunamadı!"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__sgk_isyeri_kodu
+msgid "SGK İşyeri Kodu"
+msgstr "SGK İşyeri Kodu"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__sgk_isyeri_sicil
+msgid "SGK İşyeri Sicil No"
+msgstr "SGK İşyeri Sicil No"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_res_company__sgk_isyeri_sifre
+msgid "SGK İşyeri Şifresi"
+msgstr "SGK İşyeri Şifresi"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "SGK'dan anlamsız bir yanıt döndü: %s"
+msgstr "SGK'dan anlamsız bir yanıt döndü: %s"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/wizards/hr_termination_wizard.py:0
+msgid "Severance & Notice Pay - %s"
+msgstr "Kıdem ve İhbar Tazminatı - %s"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__severance_pay
+msgid "Severance Pay"
+msgstr "Kıdem Tazminatı"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/wizards/hr_termination_wizard.py:0
+msgid "Severance and Notice Expense"
+msgstr "Kıdem ve İhbar Gideri"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/wizards/hr_termination_wizard.py:0
+msgid "Severance and Notice Payable"
+msgstr "Ödenecek Kıdem ve İhbar"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__show_sgk_entry_btn
+msgid "Show Sgk Entry Btn"
+msgstr "SGK Giriş Butonunu Göster"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__show_sgk_exit_btn
+msgid "Show Sgk Exit Btn"
+msgstr "SGK Çıkış Butonunu Göster"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__show_termination_btn
+msgid "Show Termination Btn"
+msgstr "Fesih Butonunu Göster"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_sgk_sigorta_turu__name
+msgid "Sigorta Türü Adı"
+msgstr "Sigorta Türü Adı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_hakedilen_ucret
+msgid "Son Ay Hak Edilen Ücret"
+msgstr "Son Ay Hak Edilen Ücret"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Sözleşmeyi Feshet / Tazminat"
+msgstr "Sözleşmeyi Feshet / Tazminat"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid "Sözleşmeyi Feshet ve Tazminat Hesapla"
+msgstr "Sözleşmeyi Feshet ve Tazminat Hesapla"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "TR Localization and KVKK"
+msgstr "TR Yerelleştirme ve KVKK"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid "Terminate Contract and Calculate Severance"
+msgstr "Sözleşmeyi Feshet ve Tazminat Hesapla"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/wizards/hr_termination_wizard.py:0
+msgid "Termination Complete"
+msgstr "Fesih İşlemi Tamamlandı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__termination_date
+msgid "Termination Date"
+msgstr "Çıkış Tarihi"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_hr_termination_wizard_form
+msgid "Termination Details"
+msgstr "Çıkış Detayları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_termination_wizard__iskur_reason_id
+msgid "Termination Reason"
+msgstr "Çıkış Nedeni"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model,name:l10n_tr_hr_advanced.model_hr_leave_type
+msgid "Time Off Type"
+msgstr "İzin Türü"
+
+#. module: l10n_tr_hr_advanced
+#: model:res.groups,name:l10n_tr_hr_advanced.group_hr_kvkk_manager
+msgid "Turkey HR / KVKK Manager"
+msgstr "Türkiye İK / KVKK Yöneticisi"
+
+#. module: l10n_tr_hr_advanced
+#: model:res.groups,comment:l10n_tr_hr_advanced.group_hr_kvkk_manager
+msgid ""
+"Users in this group can access the sensitive personal data of employees "
+"within the scope of KVKK."
+msgstr ""
+"Bu gruptaki kullanıcılar personellerin KVKK kapsamındaki hassas kişisel verilerine erişebilir."
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid "Vergi No"
+msgstr "Vergi No"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__yol_yardim_ucreti
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_version__yol_yardim_ucreti
+msgid "Yol Yardic Ucreti"
+msgstr "Yol Yardım Ücreti"
+
+#. module: l10n_tr_hr_advanced
+#: model:hr.leave.type,name:l10n_tr_hr_advanced.holiday_status_tr_annual
+msgid "Yıllık İzin"
+msgstr "Yıllık İzin"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.ui.menu,name:l10n_tr_hr_advanced.menu_hr_business_line
+msgid "ÇSGB İş Kolları"
+msgstr "ÇSGB İş Kolları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.actions.act_window,name:l10n_tr_hr_advanced.action_hr_business_line
+msgid "ÇSGB İş kolları"
+msgstr "ÇSGB İş Kolları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_eksik_gun_sayisi
+msgid "Çıkış Ayı Eksik Gün Sayısı"
+msgstr "Çıkış Ayı Eksik Gün Sayısı"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Çıkış Bildirgesi İndir(PDF)"
+msgstr "Çıkış Bildirgesi İndir(PDF)"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid ""
+"Çıkış bildirgesi gönderebilmek için personelin 'Çıkış Tarihi' ve 'Çıkış "
+"Nedeni' dolu olmalıdır!"
+msgstr ""
+"Çıkış bildirgesi gönderebilmek için personelin 'Çıkış Tarihi' ve 'Çıkış "
+"Nedeni' dolu olmalıdır!"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Çıkış nedeni 16 ise zorunludur..."
+msgstr "Çıkış nedeni 16 ise zorunludur..."
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee.py:0
+msgid "Önce personelin 'Çıkış Tarihi'ni (departure_date) girmelisiniz"
+msgstr "Önce personelin 'Çıkış Tarihi'ni (departure_date) girmelisiniz"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Önceki Dönem"
+msgstr "Önceki Dönem"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_onceki_belge_turu_id
+msgid "Önceki Dönem Belge Türü"
+msgstr "Önceki Dönem Belge Türü"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_onceki_eksik_gun_nedeni_id
+msgid "Önceki Dönem Eksik Gün Nedeni"
+msgstr "Önceki Dönem Eksik Gün Nedeni"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_onceki_eksik_gun_sayisi
+msgid "Önceki Dönem Eksik Gün Sayısı"
+msgstr "Önceki Dönem Eksik Gün Sayısı"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_onceki_hakedilen_ucret
+msgid "Önceki Dönem Hak Edilen Ücret"
+msgstr "Önceki Dönem Hak Edilen Ücret"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_onceki_prim_ikramiye
+msgid "Önceki Dönem Prim/İkramiye"
+msgstr "Önceki Dönem Prim/İkramiye"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid "Örn: 12345678901"
+msgstr "Örn: 12345678901"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_company_form_sgk_inherit
+msgid "Örn: 999"
+msgstr "Örn: 999"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "Özlük Belgeleri (Documents)"
+msgstr "Özlük Belgeleri (Documents)"
+
+#. module: l10n_tr_hr_advanced
+#: model:hr.leave.type,name:l10n_tr_hr_advanced.holiday_status_tr_unpaid
+msgid "Ücretsiz İzin"
+msgstr "Ücretsiz İzin"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.actions.act_window,name:l10n_tr_hr_advanced.action_hr_occupation_code
+#: model:ir.ui.menu,name:l10n_tr_hr_advanced.menu_hr_occupation_code
+msgid "İŞKUR Meslek Kodları"
+msgstr "İŞKUR Meslek Kodları"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "İşe Giriş Bildirge Detayları"
+msgstr "İşe Giriş Bildirge Detayları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_giris_referans
+msgid "İşe Giriş Referans Kodu"
+msgstr "İşe Giriş Referans Kodu"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "İşe giriş bildirgesi başarıyla Odoo evraklarına eklendi!"
+msgstr "İşe giriş bildirgesi başarıyla Odoo evraklarına eklendi!"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "İşe giriş işlemi başarıyla yapıldı. Referans: %s"
+msgstr "İşe giriş işlemi başarıyla yapıldı. Referans: %s"
+
+#. module: l10n_tr_hr_advanced
+#: model_terms:ir.ui.view,arch_db:l10n_tr_hr_advanced.view_employee_form_tr_hr_inherit
+msgid "İşten Çıkış Bildirge Detayları"
+msgstr "İşten Çıkış Bildirge Detayları"
+
+#. module: l10n_tr_hr_advanced
+#: model:ir.model.fields,field_description:l10n_tr_hr_advanced.field_hr_employee__sgk_cikis_referans
+msgid "İşten Çıkış Referans Kodu"
+msgstr "İşten Çıkış Referans Kodu"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "İşten çıkış başarıyla iletildi. Referans: %s"
+msgstr "İşten çıkış başarıyla iletildi. Referans: %s"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid "İşten çıkış bildirgesi başarıyla Odoo evraklarına eklendi!"
+msgstr "İşten çıkış bildirgesi başarıyla Odoo evraklarına eklendi!"
+
+#. module: l10n_tr_hr_advanced
+#. odoo-python
+#: code:addons/l10n_tr_hr_advanced/models/hr_employee_sgk_api.py:0
+msgid ""
+"İşten çıkış nedeni '16-Nakil' seçildiği için 'Nakil Gideceği İşyeri Sicil' "
+"alanını doldurmak zorundasınız!"
+msgstr ""
+"İşten çıkış nedeni '16-Nakil' seçildiği için 'Nakil Gideceği İşyeri Sicil' "
+"alanını doldurmak zorundasınız!"
+
+# --- MAAŞ KURALLARI ÇEVİRİLERİ ---
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary_ytdgross
+msgid "Previous Months Gross"
+msgstr "Geçmiş Aylar Kümülatif Brüt"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.l10n_tr_hr_payroll_structure_tr_employee_salary_year_to_date_deducted_tax_amount_salary_rule
+msgid "Previous Months Paid Tax"
+msgstr "Geçmiş Aylar Ödenen Vergi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary_gross_from_net
+msgid "Gross From Net"
+msgstr "Netten Brüte Hesaplama"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_salary_rule_ssie
+msgid "SSI Employee Contribution"
+msgstr "SGK İşçi Primi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_salary_rule_ssie_unemployment
+msgid "SSI (unemployment) Employee Contribution"
+msgstr "SGK İşsizlik İşçi Primi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_ssi_company_contribution
+msgid "SSI Company Contribution"
+msgstr "SGK İşveren Primi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_ssi_unemployment_company_contribution
+msgid "SSI (unemployment) Company Contribution"
+msgstr "SGK İşsizlik İşveren Primi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.hr_payroll_structure_tr_employee_salary_curtaxable
+msgid "Current Month Taxable Salary"
+msgstr "Cari Ay Vergi Matrahı"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_tax_bracket_base
+msgid "Tax Bracket Base"
+msgstr "Vergi Dilimi Matrahı"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_tax_bracket_total
+msgid "TAX Bracket Deduction"
+msgstr "Gelir Vergisi Kesintisi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_net_tax_btaxnet_deduction
+msgid "Current Month Actual Deducted Tax (Pre Exempt)"
+msgstr "Cari Ay Hesaplanan Vergi (İstisna Öncesi)"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_net_tax_deduction
+msgid "Current Month Actual Deducted Tax (Post Exempt)"
+msgstr "Cari Ay Hesaplanan Vergi (İstisna Sonrası)"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.l10n_tr_hr_payroll_structure_tr_employee_salary_deduction_salary_rule
+msgid "Deduction"
+msgstr "Kesinti"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_stamp_tax_deduction
+msgid "Stamp Tax Deduction"
+msgstr "Damga Vergisi Kesintisi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.turkey_tax_deduction_net
+msgid "Tax Deduction Net"
+msgstr "Net Vergi Kesintisi"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.l10n_tr_hr_payroll_structure_tr_employee_salary_expected_net_salary
+msgid "Expected Net Salary"
+msgstr "Hesaplanan Net Maaş"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.l10n_tr_hr_payroll_structure_tr_employee_salary_manual_deduction
+msgid "Manual Deductions"
+msgstr "Manuel Kesintiler"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.l10n_tr_hr_payroll_structure_tr_employee_salary_manual_addition
+msgid "Manual Additions"
+msgstr "Manuel Ek Kazançlar"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.salary.rule,name:l10n_tr_hr_payroll.l10n_tr_hr_payroll_structure_tr_employee_salary_net_salary
+msgid "Actual Net Salary"
+msgstr "Net Ödenen Maaş"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.rule.parameter,name:l10n_tr_hr_payroll.rule_parameter_l10n_tr_lower_boundary
+msgid "Türkiye Minimum Wage"
+msgstr "Türkiye Asgari Ücret"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.rule.parameter,name:l10n_tr_hr_payroll.rule_parameter_l10n_tr_ssi_base_ceiling
+msgid "Türkiye SSI Base Amount Ceiling"
+msgstr "Türkiye SGK Matrah Tavanı"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.rule.parameter,name:l10n_tr_hr_payroll.rule_parameter_l10n_tr_tax_exempt_amount
+msgid "Türkiye Tax Exemption Amount"
+msgstr "Türkiye Gelir Vergisi İstisna Tutarı"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.rule.parameter,name:l10n_tr_hr_payroll.rule_parameter_l10n_tr_stamp_tax_pcnt
+msgid "Türkiye Stamp Tax Percentage"
+msgstr "Türkiye Damga Vergisi Oranı"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.rule.parameter,name:l10n_tr_hr_payroll.rule_parameter_l10n_tr_stamp_tax_exempt_amount
+msgid "Türkiye Stamp Tax Exemption Amount"
+msgstr "Türkiye Damga Vergisi İstisna Tutarı"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.rule.parameter,name:l10n_tr_hr_payroll.rule_parameter_l10_tr_tax_rates
+msgid "Türkiye Tax Bracket Rates"
+msgstr "Türkiye Gelir Vergisi Dilimleri"
+
+#. module: l10n_tr_hr_payroll
+#: model:hr.rule.parameter,name:l10n_tr_hr_payroll.rule_parameter_l10n_tr_ssi_company_contribution_rates
+msgid "Türkiye SSI Company Contribution"
+msgstr "Türkiye SGK İşveren Primi Oranı"

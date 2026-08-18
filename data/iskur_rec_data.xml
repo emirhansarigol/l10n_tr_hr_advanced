@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- ÇSGB İŞ KOLLARI -->
+        <record id="csgb_code_01" model="hr.business.line">
+            <field name="code">01</field><field name="name">AVCILIK, BALIKÇILIK, TARIM VE ORMANCILIK</field>
+        </record>
+        <record id="csgb_code_02" model="hr.business.line">
+            <field name="code">02</field><field name="name">GIDA SANAYİİ</field>
+        </record>
+        <record id="csgb_code_03" model="hr.business.line">
+            <field name="code">03</field><field name="name">MADENCİLİK VE TAŞ OCAKLARI</field>
+        </record>
+        <record id="csgb_code_04" model="hr.business.line">
+            <field name="code">04</field><field name="name">PETROL, KİMYA, LASTİK, PLASTİK VE İLAÇ</field>
+        </record>
+        <record id="csgb_code_05" model="hr.business.line">
+            <field name="code">05</field><field name="name">DOKUMA, HAZIR GİYİM VE DERİ</field>
+        </record>
+        <record id="csgb_code_06" model="hr.business.line">
+            <field name="code">06</field><field name="name">AĞAÇ VE KÂĞIT</field>
+        </record>
+        <record id="csgb_code_07" model="hr.business.line">
+            <field name="code">07</field><field name="name">İLETİŞİM</field>
+        </record>
+        <record id="csgb_code_08" model="hr.business.line">
+            <field name="code">08</field><field name="name">BASIN, YAYIN VE GAZETECİLİK</field>
+        </record>
+        <record id="csgb_code_09" model="hr.business.line">
+            <field name="code">09</field><field name="name">BANKA, FİNANS VE SİGORTA</field>
+        </record>
+        <record id="csgb_code_10" model="hr.business.line">
+            <field name="code">10</field><field name="name">TİCARET, BÜRO, EĞİTİM VE GÜZEL SANATLAR</field>
+        </record>
+        <record id="csgb_code_11" model="hr.business.line">
+            <field name="code">11</field><field name="name">ÇİMENTO, TOPRAK VE CAM</field>
+        </record>
+        <record id="csgb_code_12" model="hr.business.line">
+            <field name="code">12</field><field name="name">METAL</field>
+        </record>
+        <record id="csgb_code_13" model="hr.business.line">
+            <field name="code">13</field><field name="name">İNŞAAT</field>
+        </record>
+        <record id="csgb_code_14" model="hr.business.line">
+            <field name="code">14</field><field name="name">ENERJİ</field>
+        </record>
+        <record id="csgb_code_15" model="hr.business.line">
+            <field name="code">15</field><field name="name">TAŞIMACILIK</field>
+        </record>
+        <record id="csgb_code_16" model="hr.business.line">
+            <field name="code">16</field><field name="name">GEMİ YAPIMI VE DENİZ TAŞIMACILIĞI, ARDİYE VE ANTREPOCULUK</field>
+        </record>
+        <record id="csgb_code_17" model="hr.business.line">
+            <field name="code">17</field><field name="name">SAĞLIK VE SOSYAL HİZMETLER</field>
+        </record>
+        <record id="csgb_code_18" model="hr.business.line">
+            <field name="code">18</field><field name="name">KONAKLAMA VE EĞLENCE İŞLERİ</field>
+        </record>
+        <record id="csgb_code_19" model="hr.business.line">
+            <field name="code">19</field><field name="name">SAVUNMA VE GÜVENLİK</field>
+        </record>
+        <record id="csgb_code_20" model="hr.business.line">
+            <field name="code">20</field><field name="name">GENEL İŞLER</field>
+        </record>
+
+
+
+        <!-- SGK İŞTEN ÇIKIŞ NEDENLERİ -->
+        <record id="iskur_code_01" model="hr.iskur.reason">
+            <field name="code">01</field><field name="name">01-deneme süreli iş sözleşmesinin işverence feshi</field>
+        </record>
+        <record id="iskur_code_02" model="hr.iskur.reason">
+            <field name="code">02</field><field name="name">02-deneme süreli iş sözleşmesinin işçi tarafından feshi</field>
+        </record>
+        <record id="iskur_code_03" model="hr.iskur.reason">
+            <field name="code">03</field><field name="name">03-Belirsiz süreli iş sözleşmesinin işçi tarafından feshi (İstifa)</field>
+        </record>
+        <record id="iskur_code_04" model="hr.iskur.reason">
+            <field name="code">04</field><field name="name">04-Belirsiz süreli iş sözleşmesinin işveren tarafından haklı sebep bildirilmeden feshi</field>
+        </record>
+        <record id="iskur_code_05" model="hr.iskur.reason">
+            <field name="code">05</field><field name="name">05-belirli süreli iş sözleşmesinin sona ermesi</field>
+        </record>
+        <record id="iskur_code_08" model="hr.iskur.reason">
+            <field name="code">08</field><field name="name">08-emeklilik(yaşlılık) veya toptan ödeme nedeniyle</field>
+        </record>
+        <record id="iskur_code_09" model="hr.iskur.reason">
+            <field name="code">09</field><field name="name">09-malulen emeklilik nedeniyle</field>
+        </record>
+        <record id="iskur_code_10" model="hr.iskur.reason">
+            <field name="code">10</field><field name="name">10-ölüm</field>
+        </record>
+        <record id="iskur_code_11" model="hr.iskur.reason">
+            <field name="code">11</field><field name="name">11-iş kazası sonucu ölüm</field>
+        </record>
+        <record id="iskur_code_12" model="hr.iskur.reason">
+            <field name="code">12</field><field name="name">12-askerlik</field>
+        </record>
+        <record id="iskur_code_13" model="hr.iskur.reason">
+            <field name="code">13</field><field name="name">13-kadın işçinin evlenmesi</field>
+        </record>
+        <record id="iskur_code_14" model="hr.iskur.reason">
+            <field name="code">14</field><field name="name">14-emeklilik için yaş dışında diğer şartların tamamlanması</field>
+        </record>
+        <record id="iskur_code_15" model="hr.iskur.reason">
+            <field name="code">15</field><field name="name">15-toplu işçi çıkarma</field>
+        </record>
+        <record id="iskur_code_16" model="hr.iskur.reason">
+            <field name="code">16</field><field name="name">16-sözleşme sona ermeden sigortalının aynı işverene ait işyerine nakil</field>
+        </record>
+        <record id="iskur_code_17" model="hr.iskur.reason">
+            <field name="code">17</field><field name="name">17-çalıştığı işyerinin kapanması-feshi</field>
+        </record>
+        <record id="iskur_code_18" model="hr.iskur.reason">
+            <field name="code">18</field><field name="name">18-işin sona ermesi</field>
+        </record>
+        <record id="iskur_code_19" model="hr.iskur.reason">
+            <field name="code">19</field><field name="name">19-mevsim bitimi</field>
+        </record>
+        <record id="iskur_code_20" model="hr.iskur.reason">
+            <field name="code">20</field><field name="name">20-kampanya bitimi</field>
+        </record>
+        <record id="iskur_code_21" model="hr.iskur.reason">
+            <field name="code">21</field><field name="name">21-statü değişikliği</field>
+        </record>
+        <record id="iskur_code_22" model="hr.iskur.reason">
+            <field name="code">22</field><field name="name">22-diğer nedenler</field>
+        </record>
+        <record id="iskur_code_23" model="hr.iskur.reason">
+            <field name="code">23</field><field name="name">23-İşçi tarafından zorunlu nedenlerle fesih</field>
+        </record>
+        <record id="iskur_code_24" model="hr.iskur.reason">
+            <field name="code">24</field><field name="name">24-işçi tarafından sağlık nedeniyle fesih</field>
+        </record>
+        <record id="iskur_code_25" model="hr.iskur.reason">
+            <field name="code">25</field><field name="name">25-işverenin ahlak ve iyiniyet kurallara aykırı davranışı nedeniyle</field>
+        </record>
+        <record id="iskur_code_26" model="hr.iskur.reason">
+            <field name="code">26</field><field name="name">26-disiplin kurulu kararı ile</field>
+        </record>
+        <record id="iskur_code_27" model="hr.iskur.reason">
+            <field name="code">27</field><field name="name">27-işveren tarafından zorunlu nedenlerle ve tutukluluk nedeniyle</field>
+        </record>
+        <record id="iskur_code_28" model="hr.iskur.reason">
+            <field name="code">28</field><field name="name">28-işveren tarafından sağlık nedeniyle</field>
+        </record>
+        <record id="iskur_code_29" model="hr.iskur.reason">
+            <field name="code">29</field><field name="name">29-işveren tarafından işçinin ahlak ve iyi niyet kurallarına aykırı davranışı nedeniyle</field>
+        </record>
+        <record id="iskur_code_30" model="hr.iskur.reason">
+            <field name="code">30</field><field name="name">30-vize süresinin bitimi</field>
+        </record>
+        <record id="iskur_code_31" model="hr.iskur.reason">
+            <field name="code">31</field><field name="name">31-borçlar,sendikalar,grev ve lokavt kanunu kapsamında kendi istek ve kusuru dışında</field>
+        </record>
+        <record id="iskur_code_32" model="hr.iskur.reason">
+            <field name="code">32</field><field name="name">32-4046 sayılı kanunun 21. maddesine göre özelleştirme nedeniyle</field>
+        </record>
+        <record id="iskur_code_33" model="hr.iskur.reason">
+            <field name="code">33</field><field name="name">33-gazeteci tarafından sözleşmenin feshi</field>
+        </record>
+        <record id="iskur_code_34" model="hr.iskur.reason">
+            <field name="code">34</field><field name="name">34-işyerinin devri işin veya işyerinin niteliğinin değişmesi nedeniyle</field>
+        </record>
+        <record id="iskur_code_35" model="hr.iskur.reason">
+            <field name="code">35</field><field name="name">35-6495 SK nedeniyle devlet memurluğuna geçenler</field>
+        </record>
+        <record id="iskur_code_36" model="hr.iskur.reason">
+            <field name="code">36</field><field name="name">36-KHK ile işyerinin kapatılması</field>
+        </record>
+        <record id="iskur_code_37" model="hr.iskur.reason">
+            <field name="code">37</field><field name="name">37-KHK ile kamu görevinden çıkarma</field>
+        </record>
+
+        <!-- SGK EKSİK GÜN NEDENLERİ -->
+        <record id="md_00" model="hr.missing.day.reason"><field name="code">00</field><field name="name">Ekisk Gün Bildirilmeyecek</field></record>
+        <record id="md_01" model="hr.missing.day.reason"><field name="code">01</field><field name="name">İstirahat</field></record>
+        <record id="md_02" model="hr.missing.day.reason"><field name="code">02</field><field name="name">Ücretsiz/aylıksız izin</field></record>
+        <record id="md_03" model="hr.missing.day.reason"><field name="code">03</field><field name="name">Disiplin cezası</field></record>
+        <record id="md_04" model="hr.missing.day.reason"><field name="code">04</field><field name="name">Gözaltına alınma</field></record>
+        <record id="md_05" model="hr.missing.day.reason"><field name="code">05</field><field name="name">Tutukluluk</field></record>
+        <record id="md_06" model="hr.missing.day.reason"><field name="code">06</field><field name="name">Kısmi istihdam</field></record>
+        <record id="md_07" model="hr.missing.day.reason"><field name="code">07</field><field name="name">Puantaj kayıtları</field></record>
+        <record id="md_08" model="hr.missing.day.reason"><field name="code">08</field><field name="name">Grev</field></record>
+        <record id="md_09" model="hr.missing.day.reason"><field name="code">09</field><field name="name">Lokavt</field></record>
+        <record id="md_10" model="hr.missing.day.reason"><field name="code">10</field><field name="name">Genel hayatı etkileyen olaylar</field></record>
+        <record id="md_11" model="hr.missing.day.reason"><field name="code">11</field><field name="name">Doğal afet</field></record>
+        <record id="md_12" model="hr.missing.day.reason"><field name="code">12</field><field name="name">Birden Fazla</field></record>
+        <record id="md_14" model="hr.missing.day.reason"><field name="code">14</field><field name="name">Diğer</field></record>
+        <record id="md_15" model="hr.missing.day.reason"><field name="code">15</field><field name="name">Devamsızlık</field></record>
+        <record id="md_16" model="hr.missing.day.reason"><field name="code">16</field><field name="name">Fesih tarihinde çalışmamış</field></record>
+        <record id="md_17" model="hr.missing.day.reason"><field name="code">17</field><field name="name">Ev hizmetlerinde 30 günden az</field></record>
+        <record id="md_18" model="hr.missing.day.reason"><field name="code">18</field><field name="name">Kısa çalışma ödeneği</field></record>
+        <record id="md_19" model="hr.missing.day.reason"><field name="code">19</field><field name="name">Ücretsiz doğum izni</field></record>
+        <record id="md_20" model="hr.missing.day.reason"><field name="code">20</field><field name="name">Ücretsiz yol izni</field></record>
+        <record id="md_21" model="hr.missing.day.reason"><field name="code">21</field><field name="name">Diğer ücretsiz izin</field></record>
+        <record id="md_22" model="hr.missing.day.reason"><field name="code">22</field><field name="name">5434 SK ek 76, GM 192</field></record>
+        <record id="md_23" model="hr.missing.day.reason"><field name="code">23</field><field name="name">Yarım çalışma ödeneği</field></record>
+        <record id="md_24" model="hr.missing.day.reason"><field name="code">24</field><field name="name">Yarım çalışma ödeneği ve nedenler</field></record>
+
+
+        <!-- BELGE TÜRLERİ -->
+
+        <record id="sgk_belge_01" model="hr.sgk.belge.turu">
+            <field name="code">01</field>
+            <field name="name">Hizmet akdi ile tüm sigorta kollarına tabi çalışanlar (Yabancı uyruklu sigortalılar dahil)</field>
+        </record>
+
+        <record id="sgk_belge_02" model="hr.sgk.belge.turu">
+            <field name="code">02</field>
+            <field name="name">Sosyal güvenlik destek primine tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_04" model="hr.sgk.belge.turu">
+            <field name="code">04</field>
+            <field name="name">Yer altında sürekli çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)</field>
+        </record>
+
+        <record id="sgk_belge_05" model="hr.sgk.belge.turu">
+            <field name="code">05</field>
+            <field name="name">Yer altında gruplu çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)</field>
+        </record>
+
+        <record id="sgk_belge_06" model="hr.sgk.belge.turu">
+            <field name="code">06</field>
+            <field name="name">Yer üstü gruplu çalışanlar (Maden işyerlerinde 1/10/2008 öncesi çalışması olanlar için)</field>
+        </record>
+
+        <record id="sgk_belge_07" model="hr.sgk.belge.turu">
+            <field name="code">07</field>
+            <field name="name">3308 sayılı kanunda belirtilen aday çırak, çırak ve mesleki işletmelerde eğitim gören öğrenciler</field>
+        </record>
+
+        <record id="sgk_belge_12" model="hr.sgk.belge.turu">
+            <field name="code">12</field>
+            <field name="name">Geçici 20. maddeye tabi olanlar</field>
+        </record>
+
+        <record id="sgk_belge_13" model="hr.sgk.belge.turu">
+            <field name="code">13</field>
+            <field name="name">Tüm sigorta kollarına tabi olup işsizlik sigortası primi kesilmeyenler</field>
+        </record>
+
+        <record id="sgk_belge_14" model="hr.sgk.belge.turu">
+            <field name="code">14</field>
+            <field name="name">Libya'da çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_19" model="hr.sgk.belge.turu">
+            <field name="code">19</field>
+            <field name="name">Ceza infaz kurumları ile tutukevleri bünyesinde oluşturulan tesis atölye ve benzeri ünitelerde çalıştırılan hükümlü ve tutuklular</field>
+        </record>
+
+        <record id="sgk_belge_20" model="hr.sgk.belge.turu">
+            <field name="code">20</field>
+            <field name="name">İstisna akdine istinaden Almanya'ya götürülen Türk işçiler</field>
+        </record>
+
+        <record id="sgk_belge_21" model="hr.sgk.belge.turu">
+            <field name="code">21</field>
+            <field name="name">Türk işverenler tarafından sosyal güvenlik sözleşmesi imzalanmamış ülkelere götürülerek çalıştırılan Türk işçileri</field>
+        </record>
+
+        <record id="sgk_belge_22" model="hr.sgk.belge.turu">
+            <field name="code">22</field>
+            <field name="name">Meslek liselerinde okumakta iken veya yüksek öğrenimleri sırasında zorunlu staja tabi tutulan öğrenciler</field>
+        </record>
+
+        <record id="sgk_belge_23" model="hr.sgk.belge.turu">
+            <field name="code">23</field>
+            <field name="name">Harp malülleri ile 3713 ve 2330 sayılı kanunlara göre vazife malüllüğü aylığı alanlardan kısa vadeli sigorta kollarına tabi olanlar</field>
+        </record>
+
+        <record id="sgk_belge_24" model="hr.sgk.belge.turu">
+            <field name="code">24</field>
+            <field name="name">Harp malülleri ile 3713 ve 2330 sayılı kanunlara göre vazife malüllüğü aylığı alanlardan kısa ve uzun vadeli sigorta kollarına tabi olanlar</field>
+        </record>
+
+        <record id="sgk_belge_25" model="hr.sgk.belge.turu">
+            <field name="code">25</field>
+            <field name="name">Türkiye İş Kurumu tarafından düzenlenen eğitimlere katılan kursiyerler</field>
+        </record>
+
+        <record id="sgk_belge_28" model="hr.sgk.belge.turu">
+            <field name="code">28</field>
+            <field name="name">4046 sayılı kanunun 21 inci maddesi kapsamında iş kaybı tazminatı alanlar</field>
+        </record>
+
+        <record id="sgk_belge_29" model="hr.sgk.belge.turu">
+            <field name="code">29</field>
+            <field name="name">Tüm sigorta kollarına tabi çalışıp 60 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_30" model="hr.sgk.belge.turu">
+            <field name="code">30</field>
+            <field name="name">İşsizlik sigortası hariç 60 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_31" model="hr.sgk.belge.turu">
+            <field name="code">31</field>
+            <field name="name">Harp malülleri ile 3713 ve 2330 sayılı kanunlara göre vazife malüllüğü aylığı alanlardan kısa ve uzun vadeli sigorta kollarına tabi olup 60 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_32" model="hr.sgk.belge.turu">
+            <field name="code">32</field>
+            <field name="name">Tüm sigorta kollarına tabi çalışıp 90 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_33" model="hr.sgk.belge.turu">
+            <field name="code">33</field>
+            <field name="name">İşsizlik sigortası hariç 90 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_34" model="hr.sgk.belge.turu">
+            <field name="code">34</field>
+            <field name="name">Harp malülleri ile 3713 ve 2330 sayılı kanunlara göre vazife malüllüğü aylığı alanlardan kısa ve uzun vadeli sigorta kollarına tabi olup 90 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_35" model="hr.sgk.belge.turu">
+            <field name="code">35</field>
+            <field name="name">Tüm sigorta kollarına tabi çalışıp 180 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_36" model="hr.sgk.belge.turu">
+            <field name="code">36</field>
+            <field name="name">İşsizlik sigortası hariç 180 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_37" model="hr.sgk.belge.turu">
+            <field name="code">37</field>
+            <field name="name">Harp malülleri ile 3713 ve 2330 sayılı kanunlara göre vazife malüllüğü aylığı alanlardan kısa ve uzun vadeli sigorta kollarına tabi olup 180 gün fiili hizmet süresi zammına tabi çalışanlar</field>
+        </record>
+
+        <record id="sgk_belge_39" model="hr.sgk.belge.turu">
+            <field name="code">39</field>
+            <field name="name">Birleşik Krallıkta ikamet edenler ve İşviçre vatandaşı olanlardan uzun vadeli sigorta kolunun uygulanmasını talep etmeyenler</field>
+        </record>
+
+        <record id="sgk_belge_41" model="hr.sgk.belge.turu">
+            <field name="code">41</field>
+            <field name="name">Kamu idarelerinde iş akdi askıda olanlar</field>
+        </record>
+
+        <record id="sgk_belge_42" model="hr.sgk.belge.turu">
+            <field name="code">42</field>
+            <field name="name">3308 Sayılı Kanunda Belirtilen Aday Çırak, Çırak ve İşletmelerde Mesleki Eğitim Gören Öğrencilerden Bakmakla Yükümlü Olunmayanlar</field>
+        </record>
+
+        <record id="sgk_belge_43" model="hr.sgk.belge.turu">
+            <field name="code">43</field>
+            <field name="name">Meslek Liselerinde Okumakta İken veya Yüksek Öğrenimleri Sırasında Staja Tabi Tutulan Öğrenciler İle 2547 Sayılı Kanun Uyarınca Üniversitelerde Kısmi Zamanlı Çalıştırılan Öğrencilerden Bakmakla Yükümlü Olunmayanlar</field>
+        </record>
+
+        <record id="sgk_belge_44" model="hr.sgk.belge.turu">
+            <field name="code">44</field>
+            <field name="name">Türkiye İş Kurumu Tarafından Düzenlenen Eğitimlere Katılan Kursiyerlerden Bakmakla Yükümlü Olunmayanlar</field>
+        </record>
+
+        <record id="sgk_belge_48" model="hr.sgk.belge.turu">
+            <field name="code">48</field>
+            <field name="name">EMEKLİ YERALTINDA ÇALIŞAN</field>
+        </record>
+
+        <record id="sgk_belge_49" model="hr.sgk.belge.turu">
+            <field name="code">49</field>
+            <field name="name">TAMAMLAYICI BAKMAKLA YÜK.</field>
+        </record>
+
+        <record id="sgk_belge_50" model="hr.sgk.belge.turu">
+            <field name="code">50</field>
+            <field name="name">TAMAMLAYICI BAKM YÜK.OLM.</field>
+        </record>
+
+        <record id="sgk_belge_51" model="hr.sgk.belge.turu">
+            <field name="code">51</field>
+            <field name="name">GÜVENLİK KORUCULARI EK-15.</field>
+        </record>
+
+        <!-- ================= SGK SİGORTA TÜRLERİ ================= -->
+        <record id="sgk_sigorta_0" model="hr.sgk.sigorta.turu">
+            <field name="code">0</field>
+            <field name="name">Tüm Sigorta Kolları (zorunlu)</field>
+        </record>
+        <record id="sgk_sigorta_2" model="hr.sgk.sigorta.turu">
+            <field name="code">2</field>
+            <field name="name">Yurtdışına işçi olarak gidenler</field>
+        </record>
+        <record id="sgk_sigorta_7" model="hr.sgk.sigorta.turu">
+            <field name="code">7</field>
+            <field name="name">Çırak</field>
+        </record>
+        <record id="sgk_sigorta_8" model="hr.sgk.sigorta.turu">
+            <field name="code">8</field>
+            <field name="name">Sosyal Güvenlik Destek Primi</field>
+        </record>
+        <record id="sgk_sigorta_12" model="hr.sgk.sigorta.turu">
+            <field name="code">12</field>
+            <field name="name">U.Söz.Olmayan Yab.Uyrk.Sigortalı</field>
+        </record>
+        <record id="sgk_sigorta_14" model="hr.sgk.sigorta.turu">
+            <field name="code">14</field>
+            <field name="name">Cezaevi Çalışanları</field>
+        </record>
+        <record id="sgk_sigorta_16" model="hr.sgk.sigorta.turu">
+            <field name="code">16</field>
+            <field name="name">İşkur Kursiyerleri</field>
+        </record>
+        <record id="sgk_sigorta_17" model="hr.sgk.sigorta.turu">
+            <field name="code">17</field>
+            <field name="name">İş Kaybı Tazminatı Alanlar</field>
+        </record>
+        <record id="sgk_sigorta_18" model="hr.sgk.sigorta.turu">
+            <field name="code">18</field>
+            <field name="name">Yök ve ÖSYM Kısmi Isdihdam</field>
+        </record>
+        <record id="sgk_sigorta_19" model="hr.sgk.sigorta.turu">
+            <field name="code">19</field>
+            <field name="name">Stajyer</field>
+        </record>
+        <record id="sgk_sigorta_24" model="hr.sgk.sigorta.turu">
+            <field name="code">24</field>
+            <field name="name">İntörn Öğrenci</field>
+        </record>
+        <record id="sgk_sigorta_25" model="hr.sgk.sigorta.turu">
+            <field name="code">25</field>
+            <field name="name">Harp m. Vazife m. 2330 ve 3713 SK göre aylık alan</field>
+        </record>
+        <record id="sgk_sigorta_32" model="hr.sgk.sigorta.turu">
+            <field name="code">32</field>
+            <field name="name">Bursiyer</field>
+        </record>
+        <record id="sgk_sigorta_33" model="hr.sgk.sigorta.turu">
+            <field name="code">33</field>
+            <field name="name">Güvenlik Korucusu</field>
+        </record>
+        <record id="sgk_sigorta_34" model="hr.sgk.sigorta.turu">
+            <field name="code">34</field>
+            <field name="name">Gecici 20 kapsamında Zorunlu Sigortalı</field>
+        </record>
+        <record id="sgk_sigorta_35" model="hr.sgk.sigorta.turu">
+            <field name="code">35</field>
+            <field name="name">Gecici 20 kapsamında Sosyal Güvenlik Destekleme Primi</field>
+        </record>
+        <record id="sgk_sigorta_37" model="hr.sgk.sigorta.turu">
+            <field name="code">37</field>
+            <field name="name">Tamamlayıcı ya da Alan Eğitimi Gören Öğrenciler</field>
+        </record>
+
+        <!-- ================= SGK GÖREV KODLARI ================= -->
+        <record id="sgk_gorev_01" model="hr.sgk.gorev.kodu">
+            <field name="code">01</field>
+            <field name="name">İşveren veya vekili</field>
+        </record>
+        <record id="sgk_gorev_02" model="hr.sgk.gorev.kodu">
+            <field name="code">02</field>
+            <field name="name">İşçi</field>
+        </record>
+        <record id="sgk_gorev_03" model="hr.sgk.gorev.kodu">
+            <field name="code">03</field>
+            <field name="name">657 SK (4/b) kapsamında çalışanlar</field>
+        </record>
+        <record id="sgk_gorev_04" model="hr.sgk.gorev.kodu">
+            <field name="code">04</field>
+            <field name="name">657 SK (4/c) kapsamında çalışanlar</field>
+        </record>
+        <record id="sgk_gorev_05" model="hr.sgk.gorev.kodu">
+            <field name="code">05</field>
+            <field name="name">Çıraklar ve stajer öğrenciler</field>
+        </record>
+        <record id="sgk_gorev_06" model="hr.sgk.gorev.kodu">
+            <field name="code">06</field>
+            <field name="name">Diğerleri</field>
+        </record>
+
+        <!-- 1. ÜCRETSİZ İZİN (SGK KOD 02) -->
+        <record id="holiday_status_tr_unpaid" model="hr.leave.type">
+            <field name="name">Ücretsiz İzin</field>
+            <!-- requires_allocation: İzin hakkı tanımlamaya gerek var mı? (no = herkes alabilir) -->
+            <field name="requires_allocation">no</field>
+            <!-- İşte sihirli eşleştirme: Senin yazdığın md_02 id'sine bağlıyoruz -->
+            <field name="sgk_missing_day_reason_id" ref="l10n_tr_hr_advanced.md_02"/>
+        </record>
+
+        <!-- 2. HASTALIK / RAPOR (SGK KOD 01) -->
+        <record id="holiday_status_tr_sick" model="hr.leave.type">
+            <field name="name">Hastalık / Rapor</field>
+            <field name="requires_allocation">no</field>
+            <field name="sgk_missing_day_reason_id" ref="l10n_tr_hr_advanced.md_01"/>
+        </record>
+
+        <!-- 3. YILLIK İZİN (SGK KOD 00 - Eksik Gün Bildirilmeyecek) -->
+        <record id="holiday_status_tr_annual" model="hr.leave.type">
+            <field name="name">Yıllık İzin</field>
+            <!-- Yıllık izin için personele hak (allocation) tanımlanması zorunludur -->
+            <field name="requires_allocation">yes</field>
+            <field name="sgk_missing_day_reason_id" ref="l10n_tr_hr_advanced.md_00"/>
+        </record>
+
+        <!-- 4. DİĞER ÜCRETSİZ İZİNLER (SGK KOD 21) -->
+        <record id="holiday_status_tr_other_unpaid" model="hr.leave.type">
+            <field name="name">Mazeret İzni (Ücretsiz)</field>
+            <field name="requires_allocation">no</field>
+            <field name="sgk_missing_day_reason_id" ref="l10n_tr_hr_advanced.md_21"/>
+        </record>
+
+    </data>
+</odoo>

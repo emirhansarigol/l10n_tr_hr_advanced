@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- ========================================== -->
+        <!-- 1. ÜCRET PUSULASI İÇİN RAPOR AKSİYONU (HTML)-->
+        <!-- ========================================== -->
+        <record id="action_report_payslip_tr" model="ir.actions.report">
+            <field name="name">Ücret Pusulası (Detaylı)</field>
+            <field name="model">hr.payslip</field>
+            <!-- Wkhtmltopdf hatası almamak için qweb-html yapıldı -->
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">l10n_tr_hr_advanced.report_payslip_tr</field>
+            <field name="report_file">l10n_tr_hr_advanced.report_payslip_tr</field>
+            <field name="print_report_name">'Ücret_Pusulası_%s' % (object.employee_id.name)</field>
+            <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- 2. ÜCRET PUSULASI İÇİN ÖZEL BUTON          -->
+        <!-- ========================================== -->
+        <record id="view_hr_payslip_form_print_button" model="ir.ui.view">
+            <field name="name">hr.payslip.form.print.button</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <!-- Senin eski kodundaki gibi orijinal yazdır butonunun hemen yanına ekliyoruz -->
+                <xpath expr="//header/button[@name='action_print_payslip']" position="after">
+                    <button name="%(l10n_tr_hr_advanced.action_report_payslip_tr)d"
+                            string="Ücret Pusulası Al"
+                            type="action"
+                            class="oe_highlight"
+                            invisible="state == 'draft'"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- 3. ÇARŞAF BORDRO İÇİN RAPOR AKSİYONU (HTML)-->
+        <!-- ========================================== -->
+        <record id="action_report_payslip_run_tr" model="ir.actions.report">
+            <field name="name">Detaylı Çarşaf Bordro</field>
+            <field name="model">hr.payslip.run</field>
+            <!-- Wkhtmltopdf hatası almamak için qweb-html yapıldı -->
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">l10n_tr_hr_advanced.report_payslip_run_tr</field>
+            <field name="report_file">l10n_tr_hr_advanced.report_payslip_run_tr</field>
+            <field name="print_report_name">'Carsaf_Bordro_%s' % (object.name)</field>
+            <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

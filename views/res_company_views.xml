@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_sgk_inherit" model="ir.ui.view">
+        <field name="name">res.company.sgk.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <!-- Şirket kartındaki notebook'un içine yeni bir "SGK Tescil" sekmesi açıyoruz -->
+            <xpath expr="//notebook" position="inside">
+                <page string="SGK Tescil / API Ayarları" name="sgk_api_settings">
+                    <group>
+                        <group string="SGK Web Servis Kullanıcı Bilgileri">
+                            <field name="sgk_kullanici_adi" placeholder="Örn: 12345678901"/>
+                            <field name="sgk_isyeri_kodu" placeholder="Örn: 999"/>
+                            <field name="sgk_sistem_sifre" password="True"/>
+                            <field name="sgk_isyeri_sifre" password="True"/>
+                            <field name="sgk_isyeri_sicil" placeholder="26 Haneli Sicil No"/>
+                            <field name="sgk_vergi_no" placeholder="Vergi No"/>
+
+                        </group>
+                        <group string="Bilgi">
+                            <div class="text-muted">
+                                Buraya girilen şifreler, personel işe giriş ve çıkış bildirgelerinin (SGK Web Servisleri) Odoo üzerinden otomatik gönderilebilmesi için kullanılır.
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_employee_form_tr_hr_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.tr.hr.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='sex']" position="attributes">
+                    <attribute name="required">True</attribute>
+                </xpath>
+
+                <xpath expr="//group[@name='hr_birth_group']" position="after">
+                    <group string="TR Localization and KVKK">
+                        <field name="kvkk_approved" required="1"/>
+                        <field name="kvkk_approval_date" invisible="not kvkk_approved" required="kvkk_approved"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//page[@name='personal_information']" position="after">
+                    <page name="sgk_employment_registration" string="SGK Employment Registration">
+                        <div class="oe_button_box" style="margin-bottom: 20px; width: 100%;">
+                            <field name="show_sgk_entry_btn" invisible="True"/>
+                            <field name="show_sgk_exit_btn" invisible="True"/>
+                            <field name="show_termination_btn" invisible="True"/>
+                            <field name="is_sgk_entry_generated" invisible="True"/>
+
+                            <button name="action_generate_sgk_entry"
+                                    string="SGK İşe Giriş Bildirgesi Gönder (API)"
+                                    type="object"
+                                    class="btn-primary"
+                                    style="margin-right: 10px;"
+                                    invisible="not show_sgk_entry_btn"/>
+
+                            <button name="action_download_sgk_entry_pdf"
+                                    string="Giriş Bildirgesi İndir(PDF)"
+                                    type="object"
+                                    class="btn-success me-3"
+                                    invisible="not sgk_giris_referans"/>
+
+                            <button name="action_terminate_contract"
+                                    string="Sözleşmeyi Feshet / Tazminat"
+                                    type="object"
+                                    class="btn-danger me-3"
+                                    invisible="not show_termination_btn"/>
+
+                            <button name="action_generate_sgk_exit"
+                                    string="SGK Çıkış Bildirgesi Gönder (API)"
+                                    type="object"
+                                    class="btn-warning"
+                                    invisible="not show_sgk_exit_btn"/>
+
+                            <button name="action_download_sgk_exit_pdf"
+                                    string="Çıkış Bildirgesi İndir(PDF)"
+                                    type="object"
+                                    class="btn-success"
+                                    invisible="not sgk_cikis_referans"/>
+                        </div>
+
+                        <!-- İkiye Bölünmüş Form Yapısı -->
+                        <group>
+                            <group string="İşe Giriş Bildirge Detayları">
+                                <!-- SGK SİCİL NO ALANI BİLGİLENDİRME YAZISIYLA GÜNCELLENDİ -->
+                                <field name="ssnid" placeholder="Burayı işe giriş pdf indirdikten sonra mutlaka doldurunuz!"/>
+
+                                <field name="sgk_sigorta_turu_id" options="{'no_create':True}"/>
+                                <field name="sgk_gorev_kodu_id" options="{'no_create':True}" />
+                                <field name="sgk_meslek_kodu_id" options="{'no_create': True}" placeholder="Meslek ara..."/>
+                                <field name="csgb_iskolu_id" options="{'no_create': True}" />
+                                <field name="sgk_belge_turu_id" options="{'no_create':True}"/>
+
+                                <field name="sgk_ogrenim_kodu"/>
+                                <field name="sgk_mezuniyet_bolumu"/>
+                                <field name="sgk_mezuniyet_yili"/>
+
+                                <field name="sgk_eski_hukumlu"/>
+                                <field name="sgk_engelli"/>
+                                <field name="sgk_kismi_sureli"/>
+                                <field name="sgk_kismi_sureli_gun" invisible="not sgk_kismi_sureli"/>
+
+                                <!-- İşe Giriş Nakil Alanları -->
+                                <separator string="Nakil İşlemleri (Giriş)"/>
+                                <field name="sgk_nakil_gelis"/>
+                                <field name="sgk_nakil_geldigi_sicil" invisible="not sgk_nakil_gelis" placeholder="26 Haneli İşyeri Sicil No..."/>
+
+                                <separator string="Kurum Dönüş Bilgileri"/>
+                                <field name="sgk_giris_referans"/>
+                            </group>
+
+                            <!-- SAĞ: SGK İŞTEN ÇIKIŞ BİLGİLERİ -->
+                            <group string="İşten Çıkış Bildirge Detayları" >
+                                <button name="action_fetch_missing_days_from_leaves"
+                                        string="Eksik Günleri İzinlerden Çek"
+                                        type="object"
+                                        class="oe_highlight btn-info"
+                                        icon="fa-calendar-minus"
+                                        readonly="not is_sgk_entry_generated"
+                                        colspan="2"
+                                        style="margin-bottom:25px; width:100%;"/>
+
+                                <field name="iskur_reason_id" readonly="not is_sgk_entry_generated" colspan="2"/>
+                                <field name="departure_date" readonly="not is_sgk_entry_generated" colspan="2"/>
+
+                                <!-- İşten Çıkış Nakil Alanı -->
+                                <field name="sgk_nakil_gidis_sicil" placeholder="Çıkış nedeni 16 ise zorunludur..." readonly="not is_sgk_entry_generated" colspan="2"/>
+
+                                <separator string="Bulunduğumuz Dönem"/>
+                                <field name="sgk_hakedilen_ucret" readonly="not is_sgk_entry_generated"/>
+                                <field name="sgk_prim_ikramiye" readonly="not is_sgk_entry_generated"/>
+                                <field name="sgk_eksik_gun_sayisi" readonly="not is_sgk_entry_generated"/>
+                                <field name="sgk_eksik_gun_nedeni_id" invisible="sgk_eksik_gun_sayisi == 0" readonly="not is_sgk_entry_generated"/>
+
+                                <separator string="Önceki Dönem"/>
+                                <field name="sgk_onceki_belge_turu_id" options="{'no_create':True}" readonly="not is_sgk_entry_generated"/>
+                                <field name="sgk_onceki_hakedilen_ucret" readonly="not is_sgk_entry_generated"/>
+                                <field name="sgk_onceki_prim_ikramiye" readonly="not is_sgk_entry_generated"/>
+                                <field name="sgk_onceki_eksik_gun_sayisi" readonly="not is_sgk_entry_generated"/>
+                                <field name="sgk_onceki_eksik_gun_nedeni_id" invisible="sgk_onceki_eksik_gun_sayisi == 0" readonly="not is_sgk_entry_generated"/>
+
+                                <separator string="Kurum Dönüş Bilgileri"/>
+                                <field name="sgk_cikis_referans" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+                <!-- 4. BELGELER ALANI (KİŞİSEL BİLGİLER SEKME İÇİNE YENİ GRUP OLARAK) -->
+                <xpath expr="//page[@name='personal_information']/group" position="inside">
+                    <group name="tr_hr_documents" string="Özlük Belgeleri (Documents)">
+                        <field name="doc_residence_cert_fname" invisible="True"/>
+                        <field name="doc_residence_cert" filename="doc_residence_cert_fname" />
+
+                        <field name="doc_criminal_record_fname" invisible="True"/>
+                        <field name="doc_criminal_record" filename="doc_criminal_record_fname" />
+
+                        <field name="sex" invisible="True"/>
+                        <field name="doc_military_cert_fname" invisible="True"/>
+                        <field name="doc_military_cert" filename="doc_military_cert_fname" readonly="sex == 'female'"/>
+
+                        <field name="doc_health_report_fname" invisible="True"/>
+                        <field name="doc_health_report" filename="doc_health_report_fname" />
+
+                        <field name="doc_blood_group_fname" invisible="True"/>
+                        <field name="doc_blood_group" filename="doc_blood_group_fname"/>
+
+                        <field name="doc_diploma_fname" invisible="True"/>
+                        <field name="doc_diploma" filename="doc_diploma_fname" />
+
+                        <field name="doc_sgk_entry_fname" invisible="True"/>
+                        <field name="doc_sgk_entry" filename="doc_sgk_entry_fname" />
+
+                        <field name="doc_sgk_exit_fname" invisible="True"/>
+                        <field name="doc_sgk_exit" filename="doc_sgk_exit_fname"/>
+
+                        <field name="doc_photo_fname" invisible="True"/>
+                        <field name="doc_photo" filename="doc_photo_fname"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- ================= İZİN TÜRLERİ FORMUNA SGK KODU EKLEME ================= -->
+        <record id="edit_holiday_status_form_tr_inherit" model="ir.ui.view">
+            <field name="name">hr.leave.type.tr.inherit</field>
+            <field name="model">hr.leave.type</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <group string="SGK (Türkiye) Entegrasyonu">
+                        <field name="sgk_missing_day_reason_id" options="{'no_create':True}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- ================= EYLEMLER (ACTIONS) ================= -->
+        <record id="action_hr_business_line" model="ir.actions.act_window">
+            <field name="name">ÇSGB İş kolları</field>
+            <field name="res_model">hr.business.line</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <record id="action_hr_occupation_code" model="ir.actions.act_window">
+            <field name="name">İŞKUR Meslek Kodları</field>
+            <field name="res_model">hr.occupation.code</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- ================= MENÜLER (MENUS) ================= -->
+        <menuitem id="menu_hr_sgk_settings_main"
+                  name="SGK / İŞKUR Tanımları"
+                  parent="hr.menu_human_resources_configuration"
+                  sequence="100"/>
+
+        <menuitem id="menu_hr_business_line"
+                  name="ÇSGB İş Kolları"
+                  parent="menu_hr_sgk_settings_main"
+                  action="action_hr_business_line"
+                  sequence="10"/>
+
+        <menuitem id="menu_hr_occupation_code"
+                  name="İŞKUR Meslek Kodları"
+                  parent="menu_hr_sgk_settings_main"
+                  action="action_hr_occupation_code"
+                  sequence="20"/>
+    </data>
+</odoo>
